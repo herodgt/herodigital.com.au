@@ -115,6 +115,5 @@ function pinSteps(root) {
 export function initMotion(root = document) {
   hydrateVideos(root);
   reveals(root);
-  magneticButtons(root);
   pinSteps(root);
 }

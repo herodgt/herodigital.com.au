@@ -53,11 +53,11 @@
   --text-testimonial: 30px;
   --leading-testimonial: 1.5;
   --text-problem-heading: 32px;
-  --leading-problem-heading: 1.18;
-  --tracking-problem-heading: -0.02em;
+  --leading-problem-heading: 1.08;
+  --tracking-problem-heading: -0.03em;
   --text-editorial-display: 56px;
-  --leading-editorial-display: 1.1;
-  --tracking-editorial-display: -0.03em;
+  --leading-editorial-display: 1.04;
+  --tracking-editorial-display: -0.035em;
   --text-hero-display: 76px;
   --leading-hero-display: 1.04;
   --tracking-hero-display: -0.04em;
@@ -94,6 +94,7 @@
   --radius-images: 17.6px;
   --radius-buttons: 9999px;
   --radius-compactbuttons: 8px;
+  --radius-btn: 13px;
   --radius: 17.6px;
   --radius-sm: 8px;
 
@@ -118,7 +119,7 @@ body {
   background: var(--color-paper-gray);
   line-height: var(--leading-body);
   font-size: var(--text-body);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -147,8 +148,8 @@ h2 {
 h3 {
   font-size: var(--text-lead);
   font-weight: var(--font-weight-medium);
-  line-height: var(--leading-lead);
-  letter-spacing: 0;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
 }
 h4 {
   font-size: var(--text-button);
@@ -185,22 +186,29 @@ p:last-child { margin-bottom: 0 }
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: .5rem;
-  font-size: var(--text-metadata);
+  gap: .6rem;
+  font-size: 12px;
   font-weight: var(--font-weight-medium);
-  letter-spacing: 0;
-  text-transform: none;
+  letter-spacing: .12em;
+  text-transform: uppercase;
   color: var(--color-muted-graphite);
-  margin-bottom: 1rem;
-  line-height: var(--leading-metadata);
+  margin-bottom: 1.1rem;
+  line-height: 1.2;
 }
-.eyebrow::before { content: none }
+.eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--color-voltage-lime);
+  flex: none;
+}
 .lead {
   font-size: var(--text-lead);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
   color: var(--color-carbon-ink);
   max-width: 40rem;
-  line-height: var(--leading-lead);
+  line-height: 1.35;
 }
 .muted { color: var(--color-muted-graphite) }
 .small { font-size: var(--text-metadata); line-height: var(--leading-metadata) }
@@ -214,29 +222,46 @@ p:last-child { margin-bottom: 0 }
   font-weight: var(--font-weight-regular);
 }
 
-/* Buttons */
+/* Buttons — soft-rect family with inline arrow and inner highlight */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
-  padding: 14px 24px;
-  border-radius: var(--radius-buttons);
+  gap: .55rem;
+  padding: 14px 22px;
+  border-radius: var(--radius-btn);
   font-weight: var(--font-weight-medium);
-  font-size: var(--text-button);
-  line-height: var(--leading-button);
+  font-size: 16px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   text-decoration: none;
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background .15s ease, border-color .15s ease, color .15s ease;
+  transition: background .18s ease, border-color .18s ease, color .18s ease, transform .18s ease, box-shadow .18s ease;
   font-family: inherit;
   background: none;
   color: inherit;
 }
 .btn:hover { text-decoration: none }
+.btn:active { transform: translateY(1px) }
+/* Inline arrow on the solid CTA buttons; nudges forward on hover */
+.btn-primary::after,
+.btn-gold::after,
+.btn-dark::after {
+  content: "→";
+  font-size: 1.05em;
+  line-height: 0;
+  transition: transform .2s ease;
+}
+.btn-primary:hover::after,
+.btn-gold:hover::after,
+.btn-dark:hover::after { transform: translateX(3px) }
+.btn-sm::after { content: none }
 .btn-primary, .btn-gold {
   background: var(--color-voltage-lime);
   color: var(--color-carbon-ink);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 0 0 1px rgba(19, 19, 20, 0.06);
 }
 .btn-primary:hover, .btn-gold:hover {
   background: #c8ff7a;
@@ -245,6 +270,7 @@ p:last-child { margin-bottom: 0 }
 .btn-dark {
   background: var(--color-carbon-ink);
   color: var(--color-cloud-white);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .btn-dark:hover { background: #000; color: var(--color-cloud-white) }
 .btn-ghost {
@@ -275,10 +301,10 @@ p:last-child { margin-bottom: 0 }
 }
 .btn-row { display: flex; flex-wrap: wrap; gap: var(--element-gap); align-items: center }
 .btn-sm, .nav-end .btn, .nav-end .btn-primary {
-  padding: 8px 16px;
-  font-size: 18px;
-  line-height: 28px;
-  border-radius: var(--radius-compactbuttons);
+  padding: 9px 16px;
+  font-size: 15px;
+  line-height: 20px;
+  border-radius: 10px;
 }
 
 /* Overlay Site Header, unboxed, no fill or shadow, edge padding */
@@ -387,11 +413,11 @@ p:last-child { margin-bottom: 0 }
 .hero .eyebrow { color: rgba(255, 255, 255, 0.72); margin-bottom: 1.4rem }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 44rem); gap: 64px; align-items: start }
 .micro {
-  margin-top: 1.15rem;
-  font-size: 16px;
+  margin-top: 1.4rem;
+  font-size: 15px;
   line-height: 1.5;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.72);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.68);
   display: flex;
   flex-wrap: wrap;
   gap: .4rem 1.25rem;
@@ -586,7 +612,7 @@ p:last-child { margin-bottom: 0 }
   font-weight: 500;
   letter-spacing: 0;
 }
-.step p { font-size: 16px; color: var(--color-carbon-ink); flex: 1; font-weight: 500 }
+.step p { font-size: 16px; color: var(--color-carbon-ink); flex: 1; font-weight: 400 }
 .step .more {
   margin-top: 1rem;
   font-size: 16px;
@@ -639,7 +665,7 @@ p:last-child { margin-bottom: 0 }
   padding: 8px 16px;
   border-radius: 9999px;
 }
-.plan .who { font-size: 16px; color: var(--color-muted-graphite); margin-bottom: 1.1rem; font-weight: 500 }
+.plan .who { font-size: 16px; color: var(--color-muted-graphite); margin-bottom: 1.1rem; font-weight: 400 }
 .plan .amt {
   font-family: var(--sans);
   font-size: 32px;
@@ -772,7 +798,7 @@ details summary::after {
   line-height: 1;
 }
 details[open] summary::after { content: "–" }
-details p { margin: 12px 0 6px; color: var(--color-carbon-ink); font-weight: 500 }
+details p { margin: 12px 0 6px; color: var(--color-carbon-ink); font-weight: 400 }
 
 /* CTA band, contained dark panel */
 .cta-shell { padding: 24px 0 48px }
@@ -1223,15 +1249,15 @@ table.data .num { font-variant-numeric: tabular-nums; white-space: nowrap }
 }
 .audit-form input[type="url"] {
   flex: 1 1 220px;
-  min-height: 52px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(19, 19, 20, 0.5);
+  min-height: 54px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(19, 19, 20, 0.45);
   color: var(--color-cloud-white);
-  border-radius: var(--radius-compactbuttons);
-  padding: 8px 16px;
+  border-radius: var(--radius-btn);
+  padding: 8px 18px;
   font: inherit;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
 }
 .audit-form input[type="url"]::placeholder { color: rgba(255, 255, 255, 0.55) }
 .audit-form input[type="url"]:focus {
