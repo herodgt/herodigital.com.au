@@ -93,8 +93,8 @@
   --radius-links: 17.6px;
   --radius-images: 17.6px;
   --radius-buttons: 9999px;
-  --radius-compactbuttons: 8px;
-  --radius-btn: 13px;
+  --radius-compactbuttons: 12px;
+  --radius-btn: 12px;
   --radius: 17.6px;
   --radius-sm: 8px;
 
@@ -134,7 +134,7 @@ h1, h2, h3, h4 {
   font-family: var(--sans);
 }
 h1 {
-  font-size: clamp(2.6rem, 7vw, var(--text-hero-display));
+  font-size: clamp(2rem, 6.3vw, var(--text-hero-display));
   font-weight: var(--font-weight-regular);
   line-height: var(--leading-hero-display);
   letter-spacing: var(--tracking-hero-display);
@@ -304,7 +304,7 @@ p:last-child { margin-bottom: 0 }
   padding: 9px 16px;
   font-size: 15px;
   line-height: 20px;
-  border-radius: 10px;
+  border-radius: var(--radius-btn);
 }
 
 /* Overlay Site Header, unboxed, no fill or shadow, edge padding */
@@ -1393,5 +1393,43 @@ table.data .num { font-variant-numeric: tabular-nums; white-space: nowrap }
 @media (max-width: 720px) {
   .audit-score-row, .audit-check { grid-template-columns: 1fr }
   .audit-result { padding: 20px }
+}
+
+/* ===== Premium mobile tuning ===== */
+@media (max-width: 640px) {
+  /* Breathing room above the bar, clear of the status bar / notch */
+  .site-header { padding-top: calc(14px + env(safe-area-inset-top, 0px)); }
+  .site-header .nav, .nav { padding-left: 20px; padding-right: 20px; }
+  .wrap { padding: 0 20px; }
+
+  /* Hero: smaller, calmer type and a clear gap under the header */
+  .hero { padding: 120px 0 56px; }
+  .hero h1 { font-size: 30px; line-height: 1.08; max-width: 20ch; }
+  .hero .lead { font-size: 16px; line-height: 1.55; margin-bottom: 1.5rem; }
+  .hero .eyebrow { margin-bottom: .85rem; }
+  .eyebrow { font-size: 11px; letter-spacing: .11em; }
+  .micro { margin-top: 1.1rem; font-size: 14px; gap: .3rem .9rem; }
+
+  /* Section headings and leads scale down with the hero */
+  h2 { font-size: clamp(1.55rem, 7vw, 2rem); }
+  .lead { font-size: 18px; line-height: 1.4; }
+  .editorial-statement { font-size: clamp(1.7rem, 7.6vw, 2.1rem); }
+  .problem-heading, .editorial-split .problem-heading, h2.problem-heading { font-size: clamp(1.45rem, 6.6vw, 1.9rem); }
+  .section-heading, .prose h2 { font-size: 24px; }
+
+  /* Consistent, compact buttons */
+  .btn { font-size: 15px; padding: 12px 18px; }
+  .nav-toggle { width: 42px; height: 42px; }
+
+  /* Tighter vertical rhythm */
+  .section { padding: 60px 0; }
+  .section-sm { padding: 48px 0; }
+  .pin-section { padding: 60px 0; }
+
+  /* Inner page heroes match */
+  .page-hero { padding: 116px 0 48px; }
+  .page-hero h1 { font-size: 30px; line-height: 1.08; }
+  .vip-hero { padding: 120px 0 56px; }
+  .vip-hero h1 { font-size: 30px; }
 }
 
