@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Page not found"
+  description="That page is not on herodigital.com.au."
+  path="/404/"
+  noindex={true}
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">404</p>
+      <h1>That page isn’t here.</h1>
+      <p class="lead">It may have moved when we reorganised the site. Try the home page, the pricing ladder or the free audit.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/">Go home</a>
+        <a class="btn btn-ghost" href="/pricing/">See pricing</a>
+      </div>
+    </div>
+  </section>
+</Base>

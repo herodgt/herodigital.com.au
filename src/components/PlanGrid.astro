@@ -1,0 +1,21 @@
+---
+import { money, type Plan } from '../data/content';
+interface Props { plans: Plan[]; ctaHref?: string; ctaLabel?: string }
+const { plans, ctaHref = '/free-audit/', ctaLabel = 'Get the free audit first' } = Astro.props;
+---
+<div class="plans">
+  {plans.map((plan) => (
+    <article class:list={['plan', plan.featured && 'featured']}>
+      {plan.featured && plan.id === 'growth' && <div class="tag">Mid plan</div>}
+      {plan.featured && plan.id === 'advanced' && <div class="tag">Mid-tier</div>}
+      <h3>{plan.name}</h3>
+      <p class="who">{plan.who}</p>
+      <div class="amt">{money(plan.price)} <span>/ {plan.period === 'month' ? 'month' : 'one-off'}</span></div>
+      {plan.setup ? <p class="setup">+{money(plan.setup)} setup · 90-day minimum</p> : <p class="setup">AUD ex GST</p>}
+      <ul>
+        {plan.points.map((p) => <li>{p}</li>)}
+      </ul>
+      <a class:list={['btn', plan.featured ? 'btn-primary' : 'btn-dark']} href={ctaHref}>{ctaLabel}</a>
+    </article>
+  ))}
+</div>

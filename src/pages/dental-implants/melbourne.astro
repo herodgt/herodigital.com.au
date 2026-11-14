@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<Base
+  title="AI visibility for Melbourne implant clinics"
+  description="This city page is here so Melbourne principals can find the same public offer. We do not invent local results or client logos."
+  path="/dental-implants/melbourne/"
+>
+  <PageHero
+    eyebrow="Dental implants"
+    title="For implant clinics in Greater Melbourne."
+    lead="This city page is here so Melbourne principals can find the same public offer. We do not invent local results or client logos."
+    crumbs={[
+      { href: '/', label: 'Home' },
+      { href: '/dental-implants/', label: 'Dental implants' },
+      { href: '/dental-implants/melbourne/', label: 'Melbourne' },
+    ]}
+  />
+  <section class="section">
+    <div class="wrap prose">
+      <p>A free audit for a Melbourne clinic uses test prompts in your suburb and the same technical checks we use in Brisbane. Exclusivity, where it applies, is written into the plan. Market Leader remains one clinic per city, by application.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/free-audit/">Get a free audit</a>
+        <a class="btn btn-ghost" href="/dental-implants/pricing/">See dental pricing</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,30 @@
+---
+import { SITE, abs } from '../lib/site';
+interface Offer {
+  name: string;
+  path: string;
+  description: string;
+  price: number;
+  priceType?: 'one-off' | 'month';
+}
+interface Props { offers: Offer[] }
+const { offers } = Astro.props;
+const data = offers.map((o) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: o.name,
+  description: o.description,
+  url: abs(o.path),
+  provider: { '@type': 'ProfessionalService', name: SITE.name, url: SITE.url },
+  areaServed: 'AU',
+  offers: {
+    '@type': 'Offer',
+    price: o.price,
+    priceCurrency: 'AUD',
+    url: abs(o.path),
+    availability: 'https://schema.org/LimitedAvailability',
+    ...(o.priceType === 'month' ? { priceSpecification: { '@type': 'UnitPriceSpecification', price: o.price, priceCurrency: 'AUD', unitText: 'MONTH' } } : {}),
+  },
+}));
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

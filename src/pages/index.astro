@@ -1,0 +1,203 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqList from '../components/FaqList.astro';
+import PlanGrid from '../components/PlanGrid.astro';
+import OfferJsonLd from '../components/OfferJsonLd.astro';
+import { ladder, aiPlans, homeFaqs, money } from '../data/content';
+---
+<Base
+  title="AI visibility for dental implant clinics"
+  description="Get recommended when patients ask ChatGPT, Perplexity, Gemini and Google about dental implants. Free AI visibility audit. Fixed public prices. Written-only delivery. Targets are aims, not guarantees."
+  path="/"
+>
+  <OfferJsonLd offers={[
+    { name: 'AI Visibility Fix Sprint', path: '/ai-visibility/fix-sprint/', description: 'One-off technical and content sprint, re-audited after 30 days.', price: 1495, priceType: 'one-off' },
+    { name: 'AI Visibility Starter', path: '/ai-visibility/plans/', description: 'Monthly AI visibility retainer for implant clinics.', price: 1995, priceType: 'month' },
+    { name: 'AI Visibility Growth', path: '/ai-visibility/plans/', description: 'Monthly AI visibility retainer for competitive suburbs.', price: 2995, priceType: 'month' },
+    { name: 'AI Visibility Premium', path: '/ai-visibility/plans/', description: 'Monthly AI visibility retainer for full-arch centres.', price: 4995, priceType: 'month' },
+  ]} />
+
+  <section class="hero-band">
+    <div class="wrap">
+    <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">For Australian dental implant clinics</p>
+        <h1>Be the clinic AI tools actually name.</h1>
+        <p class="lead">Patients now ask ChatGPT, Perplexity, Gemini and Google’s AI answers who to see for implants or All-on-4. Hero Digital works on the pages, listings, reviews and citations those tools draw on — then shows you, in writing, what changed.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/free-audit/">Get your free AI visibility audit</a>
+          <a class="btn btn-ghost" href="/pricing/">See the service ladder</a>
+        </div>
+        <div class="micro">
+          <span>No call required</span>
+          <span>Prices published, AUD ex GST</span>
+          <span>Targets are aims, not guarantees</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="ai-card">
+          <div class="ai-top"><span class="dots"><i></i><i></i><i></i></span> Example AI answer · placeholder only</div>
+          <div class="ai-body">
+            <div class="q-bubble">Who should I see for dental implants in [suburb]?</div>
+            <div class="a-block">
+              <div class="a-icon"></div>
+              <div class="a-text">
+                Here’s an illustrative shortlist. These names are placeholders, not real clinics and not a result we claim:
+                <ol>
+                  <li><span class="hl">Example Clinic A (placeholder)</span><span class="cite">example</span></li>
+                  <li>Example Clinic B (placeholder)</li>
+                  <li>Example Clinic C (placeholder)</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+          <div class="ai-foot">Stylised example for the homepage. A real audit uses dated prompts, named engines and your actual suburb.</div>
+        </div>
+        <div class="float f2"><span class="badge">?</span><div><b>Your clinic</b>Not named in this example</div></div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="wrap editorial-split">
+      <div>
+        <p class="eyebrow">The problem</p>
+        <h2 class="problem-heading">Implant patients are asking AI who to book.</h2>
+      </div>
+      <div>
+        <p class="editorial-statement">Some clinics are named in those answers and others aren’t.</p>
+        <p class="follow">We tidy the technical and content foundations AI tools can actually read, keep the work Ahpra-safe, and send a monthly written scoreboard. We don’t control what a model says tomorrow, and we don’t promise a ranking or a patient count.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-paper" id="pricing">
+    <div class="wrap">
+      <p class="eyebrow">The offer</p>
+      <h2>A clear ladder, with every price on the page.</h2>
+      <p class="lead">Start with a free audit. Buy a one-off sprint if you want a first fix. Move to a monthly plan when you’re ready. Growth services and websites are productised too — no custom quotes.</p>
+      <div class="ladder" style="margin-top:36px">
+        {ladder.map((step) => (
+          <article class:list={['step', step.core && 'step-core', step.vip && 'step-vip']}>
+            <div class="lvl">{step.level}</div>
+            <h3>{step.name}</h3>
+            <div class="price">{step.price}</div>
+            <p>{step.body}</p>
+            <a class="more" href={step.href}>{step.cta}</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="plans">
+    <div class="wrap">
+      <p class="eyebrow">AI Visibility</p>
+      <h2>Three monthly plans, one setup fee.</h2>
+      <p class="lead">Each plan includes a baseline, Ahpra-reviewed implant content, listings, a written monthly scoreboard and email answers within two business days. Extra location: {money(1995)} a month plus {money(995)} setup.</p>
+      <div style="margin-top:36px">
+        <PlanGrid plans={aiPlans} />
+      </div>
+      <p class="fine" style="margin-top:22px">Targets such as extra qualified implant enquiries are aims set from your own baseline. They are reported monthly and are not guaranteed. Existing Hero SEO clients already receive AI visibility inside their retainer, so these plans are not sold to them.</p>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="wrap split">
+      <article class="block">
+        <p class="eyebrow">Growth services</p>
+        <h3>SEO, links and ads — after a fit check.</h3>
+        <p>Prices are public. We still only take a clinic that fits. A good fit starts at the published price, not a custom quote. Ad spend is paid separately. Tier names and scopes are proposed.</p>
+        <ul>
+          <li><strong>Essential — $2,495/mo</strong> (proposed). Technical and on-page implant SEO, 2 pitches or placements, ads account recommendations.</li>
+          <li><strong>Advanced — $3,995/mo</strong> (proposed, mid-tier). Full implant SEO programme, 4 pitches or placements, managed implant search campaigns.</li>
+          <li><strong>Authority — $5,995/mo</strong> (proposed). City-wide implant and full-arch SEO, 8 pitches or placements, search plus remarketing.</li>
+        </ul>
+        <a class="btn btn-dark" href="/growth-services/fit-check/">Check if we’re a good fit</a>
+      </article>
+      <article class="block">
+        <p class="eyebrow">Websites</p>
+        <h3>Three fixed Astro and Sanity builds. No quotes.</h3>
+        <p>Every site is AI-ready and Ahpra-checked. 50% is due upfront, then 10% of the price each month until paid, or you can pay off early. Enquire to see if you qualify; the price itself is on the page.</p>
+        <ul>
+          <li><strong>Launch — $9,995.</strong> Up to 10 pages, premium template design, 4 weeks.</li>
+          <li><strong>Signature — $14,995.</strong> Up to 25 pages, custom design, implant and full-arch landers, 6 weeks.</li>
+          <li><strong>Flagship — $19,995.</strong> Up to 50 pages, full content hub, all copywriting, 8 weeks.</li>
+        </ul>
+        <a class="btn btn-dark" href="/websites/">See website packages</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="how-it-works">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2>Written only, from audit to scoreboard.</h2>
+      <p class="lead">A 20-minute call is available if you ask. We never make a call the price of getting an answer. <a href="/how-it-works/">Read the full process</a>.</p>
+      <div class="steps4" style="margin-top:36px">
+        <div class="s4"><div class="n">01</div><h3>Free audit</h3><p>You send a URL and email. We return a branded PDF. If you want a first fix, the $1,495 sprint is there.</p></div>
+        <div class="s4"><div class="n">02</div><h3>Written proposal</h3><p>Targets, the fixed fee, and the maths using your numbers or defaults you can edit. Questions stay in email.</p></div>
+        <div class="s4"><div class="n">03</div><h3>E-sign and start</h3><p>Sign and pay the setup fee in one step. An onboarding form starts delivery. No kickoff meeting required.</p></div>
+        <div class="s4"><div class="n">04</div><h3>Monthly scoreboard</h3><p>A written report of enquiries, AI mentions in our test set, and the next action plan. You can leave after 90 days.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-paper" id="ahpra">
+    <div class="wrap ahpra">
+      <div>
+        <p class="eyebrow">Compliance</p>
+        <h2>Built around Ahpra advertising rules, not around them.</h2>
+        <p class="lead">Every public asset goes through an AI pre-screen, a human Ahpra reviewer, and your written approval before it goes live. We don’t use patient testimonials, clinical before-and-afters, or wording that guarantees a result.</p>
+        <p><a href="/dental-implants/ahpra-compliance/">How we keep implant pages Ahpra-safe →</a></p>
+      </div>
+      <div class="checks">
+        <div class="check"><strong>No guaranteed outcomes</strong>Targets are aims from your baseline. They’re reported honestly, including when we’re behind.</div>
+        <div class="check"><strong>No patient stories on this site</strong>Case studies, when we have them, will be about clinic marketing work — not clinical results.</div>
+        <div class="check"><strong>You approve what goes public</strong>Listings, articles and schema changes wait for your written okay.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="wrap">
+      <p class="eyebrow">Results</p>
+      <h2>Case studies come after the pilots, not before.</h2>
+      <div class="placeholder" style="margin-top:24px">
+        <strong>Placeholder — no results to show yet.</strong>
+        <p style="margin-top:.6rem">The first write-ups will appear here once pilot clinics complete their first 90 days, with numbers taken from their scoreboards. We will not invent statistics, client logos or patient testimonials. If a clinic prefers to stay unnamed, the case will be anonymised. <a href="/results/">Visit the results page</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream" id="insights">
+    <div class="wrap">
+      <p class="eyebrow">Insights</p>
+      <h2>Notes on AI search for implant clinics.</h2>
+      <div class="cards3" style="margin-top:28px">
+        <article class="insight"><div class="soon">Coming soon</div><h3>How AI tools decide which implant clinic to name</h3><p class="muted">What we look for in test prompts — and what we can’t control.</p></article>
+        <article class="insight"><div class="soon">Coming soon</div><h3>What Ahpra advertising rules mean for implant pages</h3><p class="muted">A practical reading for principals, not legal advice.</p></article>
+        <article class="insight"><div class="soon">Coming soon</div><h3>Why Google reviews show up in AI answers</h3><p class="muted">And how we ask for them without writing the review for the patient.</p></article>
+      </div>
+      <p style="margin-top:20px"><a href="/insights/">See all planned insights →</a></p>
+    </div>
+  </section>
+
+  <FaqList faqs={homeFaqs} />
+
+  <section class="cta-shell">
+    <div class="wrap">
+    <div class="cta-band">
+      <p class="eyebrow">Lead magnet</p>
+      <h2>Get your free AI visibility audit.</h2>
+      <p class="lead">Send your clinic website and the best email to reach the principal or practice manager. We’ll return a branded PDF. No call, and no obligation to buy a plan.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:16px">
+        <a class="btn btn-primary" href="/free-audit/">Request the free audit</a>
+      </div>
+    </div>
+    </div>
+  </section>
+</Base>

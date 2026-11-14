@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import Form from '../components/Form.astro';
+import OfferJsonLd from '../components/OfferJsonLd.astro';
+---
+<Base
+  title="Market Leader"
+  description="Market Leader is Hero Digital’s VIP retainer for one dental implant clinic per city. $9,995 a month, by application. Proposed 12-month commitment, no separate setup fee. Targets are aims, not guarantees."
+  path="/market-leader/"
+  theme="vip"
+>
+  <OfferJsonLd offers={[{ name: 'Market Leader', path: '/market-leader/', description: 'VIP retainer including Premium AI visibility, mid-tier growth services and a Signature website, by application.', price: 9995, priceType: 'month' }]} />
+
+  <section class="vip-band">
+    <div class="wrap">
+    <div class="vip-hero">
+      <div class="vip-kicker">Market Leader · By application</div>
+      <h1>One clinic. One city. The full partnership.</h1>
+      <p class="lead">A single VIP package for a principal who wants Premium AI visibility, mid-tier growth services, and a Signature website under one monthly fee. Places are limited to one Market Leader clinic per city, and an application is not an acceptance.</p>
+      <div class="vip-price">$9,995 <span>a month, AUD ex GST · proposed 12-month commitment, no separate setup fee</span></div>
+      <div class="vip-meta">
+        <span class="vip-chip">Everything in Premium</span>
+        <span class="vip-chip">Mid-tier SEO, links and ads management</span>
+        <span class="vip-chip">Signature website included</span>
+        <span class="vip-chip">City-wide exclusivity</span>
+      </div>
+      <div class="btn-row" style="justify-content:center;margin-top:36px">
+        <a class="btn btn-primary" href="#apply">Apply for Market Leader</a>
+        <a class="btn btn-ghost" href="/pricing/">Compare the wider ladder</a>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="vip-section">
+    <div class="wrap">
+      <div class="lime-rule"></div>
+      <p class="eyebrow center" >What’s included</p>
+      <h2 class="center">The whole stack, in one retainer.</h2>
+      <div class="include" style="margin-top:36px">
+        <article class="inc">
+          <h3>Premium AI Visibility</h3>
+          <p>150 searches tracked, a full-arch content hub, eight Ahpra-reviewed pieces a month, a monthly media placement, fortnightly checks and the written scoreboard. Targets remain aims from your baseline, not a guarantee.</p>
+        </article>
+        <article class="inc">
+          <h3>Mid-tier growth services</h3>
+          <p>The proposed Advanced tier of SEO, link building and Google Ads management. Ad spend is paid by the clinic, separately. This is the mid tier on purpose: the top growth tier plus Premium would already exceed the Market Leader fee.</p>
+        </article>
+        <article class="inc">
+          <h3>A Signature website</h3>
+          <p>The $14,995 Astro and Sanity build — up to 25 pages, custom design, implant and full-arch landing pages, booking integration and three revision rounds — included when you commit to 12 months. It is not billed again under the standalone website payment schedule.</p>
+        </article>
+        <article class="inc">
+          <h3>Priority turnaround, city-wide exclusivity</h3>
+          <p>Your work goes to the front of the queue. We will not take another Market Leader clinic in the same city while your term is active. Limited spots are only claimed once an application is accepted.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="vip-limit">
+    <div class="wrap">
+      <div class="lime-rule"></div>
+      <h2>One Market Leader clinic per city.</h2>
+      <p style="margin-top:14px">That is a policy, not a marketing flourish. If a city is already taken, we’ll say so and point you to Premium or the rest of the ladder. We don’t invent scarcity, we don’t publish patient stories, and we don’t promise that AI tools will name you first.</p>
+    </div>
+  </section>
+
+  <section class="vip-section" id="apply">
+    <div class="wrap appl">
+      <div>
+        <p class="eyebrow" >Application</p>
+        <h2>Tell us about the clinic.</h2>
+        <p>This form is a written application, not a checkout. Jeff reviews it and replies in writing. A 20-minute call is available only if you ask for one.</p>
+        <p>We’ll need enough to judge fit: the city you want reserved, the current site, and whether a 12-month term works. If it’s not a match, you’ll hear that clearly — and you’re welcome on the waitlist or on another package.</p>
+        <p class="fine">Proposed terms, to confirm as we go: 12-month minimum because a Signature website is included; no separate setup fee (the website is the setup). After 12 months, month to month with 30 days’ notice. Prices AUD ex GST.</p>
+      </div>
+      <Form type="market-leader" theme="vip" />
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import PlanGrid from '../../components/PlanGrid.astro';
+import OfferJsonLd from '../../components/OfferJsonLd.astro';
+import { aiPlans, money } from '../../data/content';
+---
+<Base
+  title="Dental implant clinic pricing"
+  description="AI visibility pricing for Australian dental implant clinics. Starter $1,995, Growth $2,995, Premium $4,995 a month, plus $1,995 setup. Targets are aims, not guarantees. AUD ex GST."
+  path="/dental-implants/pricing/"
+>
+  <OfferJsonLd offers={aiPlans.map((p) => ({ name: `AI Visibility ${p.name}`, path: '/ai-visibility/plans/', description: p.who, price: p.price, priceType: 'month' as const }))} />
+  <PageHero
+    eyebrow="Dental pricing"
+    title="What an implant clinic actually pays."
+    lead="The figures below are the same public prices as the rest of the site. They are written here for principals comparing implant marketing retainers."
+    crumbs={[
+      { href: '/', label: 'Home' },
+      { href: '/dental-implants/', label: 'Dental implants' },
+      { href: '/dental-implants/pricing/', label: 'Pricing' },
+    ]}
+  />
+  <section class="section">
+    <div class="wrap">
+      <PlanGrid plans={aiPlans} />
+      <p class="fine" style="margin-top:22px">Setup is {money(1995)}. Extra location {money(1995)} a month plus {money(995)} setup. The $1,495 Fix Sprint is credited toward setup if you then take a plan. See the <a href="/pricing/">full ladder</a> for growth services, websites and Market Leader.</p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import OfferJsonLd from '../../components/OfferJsonLd.astro';
+---
+<Base
+  title="AI Visibility Fix Sprint"
+  description="A $1,495 one-off sprint to fix crawler access, schema, llms.txt, implant page structure and listings, then re-audit after 30 days. Credited toward setup if you move to a plan. AUD ex GST."
+  path="/ai-visibility/fix-sprint/"
+>
+  <OfferJsonLd offers={[{ name: 'AI Visibility Fix Sprint', path: '/ai-visibility/fix-sprint/', description: 'One-off technical and content sprint with a 30-day re-audit.', price: 1495 }]} />
+  <PageHero
+    eyebrow="Entry sprint"
+    title="A $1,495 first fix, then a 30-day re-audit."
+    lead="The Fix Sprint is a low-risk step after the free audit. If you later move onto Starter, Growth or Premium, this fee is credited toward the $1,995 setup."
+    crumbs={[
+      { href: '/', label: 'Home' },
+      { href: '/ai-visibility/', label: 'AI Visibility' },
+      { href: '/ai-visibility/fix-sprint/', label: 'Fix Sprint' },
+    ]}
+  />
+  <section class="section">
+    <div class="wrap prose">
+      <h2>What’s included</h2>
+      <ul>
+        <li>AI crawler access checks and robots.txt / llms.txt fixes</li>
+        <li>Core schema for the clinic and implant pages</li>
+        <li>Structure work on key implant pages (not a full rewrite of the site)</li>
+        <li>Core directory listings</li>
+        <li>A re-audit 30 days later, so you can see what changed in the same test set</li>
+      </ul>
+      <p>The re-audit is a comparison against the first run, not a promise that any AI tool will name you. If you want ongoing content, exclusivity and a monthly scoreboard, that’s what the <a href="/ai-visibility/plans/">retainers</a> are for.</p>
+      <div class="btn-row" style="margin-top:24px">
+        <a class="btn btn-primary" href="/free-audit/">Start with the free audit</a>
+        <a class="btn btn-ghost" href="/contact/">Ask about the sprint</a>
+      </div>
+    </div>
+  </section>
+</Base>

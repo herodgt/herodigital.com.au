@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<Base
+  title="Legal"
+  description="Privacy and terms for herodigital.com.au. Drafts for operations, not a substitute for legal advice."
+  path="/legal/"
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Privacy and terms."
+    lead="These pages are operational drafts. A health-advertising lawyer still needs to review the formal versions before we treat them as final."
+    crumbs={[{ href: '/', label: 'Home' }, { href: '/legal/', label: 'Legal' }]}
+  />
+  <section class="section">
+    <div class="wrap split">
+      <a class="block" href="/legal/privacy/"><h3>Privacy</h3><p>How we handle enquiry, audit and application details.</p></a>
+      <a class="block" href="/legal/terms/"><h3>Terms</h3><p>How the public offers on this site are sold and delivered.</p></a>
+    </div>
+  </section>
+</Base>

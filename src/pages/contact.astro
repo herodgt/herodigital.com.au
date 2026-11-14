@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Form from '../components/Form.astro';
+import { SITE } from '../lib/site';
+---
+<Base
+  title="Contact"
+  description="Write to Hero Digital in Brisbane. Email-first, no phone-call pressure. jcheng@hero.tt."
+  path="/contact/"
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Write to us. A call is only if you ask."
+    lead={`The most reliable address is ${SITE.email}. The form below goes to the same place once a form endpoint is connected.`}
+    crumbs={[{ href: '/', label: 'Home' }, { href: '/contact/', label: 'Contact' }]}
+  />
+  <section class="section">
+    <div class="wrap page-grid">
+      <div class="prose">
+        <h2>Email first</h2>
+        <p>We run a written-only practice by default. If you would like a 20-minute call, say so in your message and we’ll send a booking link.</p>
+        <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a><br />Hero Digital (Brisbane)</p>
+      </div>
+      <Form type="contact" />
+    </div>
+  </section>
+</Base>

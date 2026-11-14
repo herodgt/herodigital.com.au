@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Form from '../components/Form.astro';
+---
+<Base
+  title="Free AI Visibility Audit"
+  description="Request a free branded AI visibility audit for your dental implant clinic. No call required. We’ll look at crawler access, whether test prompts mention you, and the top fixes."
+  path="/free-audit/"
+>
+  <PageHero
+    eyebrow="Lead magnet"
+    title="Get your free AI visibility audit."
+    lead="Send the clinic website and the best email to reach the principal or practice manager. We’ll return a branded PDF. No call, and no obligation to buy a plan."
+    crumbs={[{ href: '/', label: 'Home' }, { href: '/free-audit/', label: 'Free audit' }]}
+  />
+  <section class="section">
+    <div class="wrap page-grid">
+      <div class="prose">
+        <h2>What’s in the PDF</h2>
+        <ul>
+          <li>A technical score for crawler access, schema and basic on-page structure</li>
+          <li>Whether named AI tools mention the clinic in dated test prompts for your suburb</li>
+          <li>The top fixes, written in plain language</li>
+        </ul>
+        <p>The audit is a snapshot of those test runs, not a prediction and not a guarantee that a tool will name you tomorrow. If you then want a first fix, the <a href="/ai-visibility/fix-sprint/">$1,495 Fix Sprint</a> is the next step, and that fee is credited toward setup if you move onto a plan.</p>
+        <p>Prefer email? Write to <a href="mailto:jcheng@hero.tt">jcheng@hero.tt</a> with your URL.</p>
+      </div>
+      <Form type="free-audit" />
+    </div>
+  </section>
+</Base>

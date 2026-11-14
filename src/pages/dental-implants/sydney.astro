@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<Base
+  title="AI visibility for Sydney implant clinics"
+  description="This city page is here so Sydney principals can find the same public offer. We do not publish a local case-study count we do not have."
+  path="/dental-implants/sydney/"
+>
+  <PageHero
+    eyebrow="Dental implants"
+    title="For implant clinics in Greater Sydney."
+    lead="This city page is here so Sydney principals can find the same public offer. We do not publish a local case-study count we do not have."
+    crumbs={[
+      { href: '/', label: 'Home' },
+      { href: '/dental-implants/', label: 'Dental implants' },
+      { href: '/dental-implants/sydney/', label: 'Sydney' },
+    ]}
+  />
+  <section class="section">
+    <div class="wrap prose">
+      <p>A free audit for a Sydney clinic uses test prompts in your suburb and the same technical checks we use in Brisbane. Growth and Premium exclusivity, if you take those plans, is set from your address. Market Leader is limited to one clinic per city and is by application.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/free-audit/">Get a free audit</a>
+        <a class="btn btn-ghost" href="/dental-implants/pricing/">See dental pricing</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,33 @@
+# Hero Digital (Brisbane)
+
+> AI and Google visibility for Australian dental implant and full-arch clinics. Written-only delivery. Based in Brisbane.
+
+- Site: https://herodigital.com.au/
+- Email: jcheng@hero.tt
+- Founder: Jeff Cheng
+- Currency: AUD, ex GST
+
+Hero Digital helps clinics get named more often when patients ask ChatGPT, Perplexity, Gemini and Google's AI answers who to see for dental implants or All-on-4. Work covers crawler access, schema, llms.txt, implant page structure, listings, reviews and Ahpra-safe content. Results are reported against each clinic's own baseline. Targets are aims, not guarantees. Hero does not promise rankings, recommendations or patient numbers, and does not publish patient testimonials or clinical claims.
+
+## Offers (public prices, AUD ex GST)
+
+- Free AI Visibility Audit: https://herodigital.com.au/free-audit/
+- AI Visibility Fix Sprint: $1,495 one-off, credited toward setup if the clinic moves to a plan: https://herodigital.com.au/ai-visibility/fix-sprint/
+- AI Visibility plans (90-day minimum): Starter $1,995/mo, Growth $2,995/mo, Premium $4,995/mo, each plus $1,995 setup: https://herodigital.com.au/ai-visibility/plans/
+- Extra location: $1,995/mo + $995 setup
+- Growth services (SEO, link building, Google Ads management; ad spend separate; sold after a fit check): Essential $2,495, Advanced $3,995, Authority $5,995 per month (tier names and scopes are proposed): https://herodigital.com.au/growth-services/
+- Custom websites in Astro + Sanity: Launch $9,995, Signature $14,995, Flagship $19,995. Payment: 50% upfront, then 10% of the price per month until paid, or pay off early: https://herodigital.com.au/websites/
+- Market Leader VIP: $9,995/mo, by application, one clinic per city: https://herodigital.com.au/market-leader/
+
+## Key pages
+
+- [Home](https://herodigital.com.au/): Service ladder and free audit
+- [Pricing](https://herodigital.com.au/pricing/): Full public price list
+- [AI Visibility](https://herodigital.com.au/ai-visibility/): Core offer
+- [Dental implants](https://herodigital.com.au/dental-implants/): Industry hub
+- [Ahpra compliance](https://herodigital.com.au/dental-implants/ahpra-compliance/): How public work is reviewed
+- [How it works](https://herodigital.com.au/how-it-works/): Written-only process
+- [About](https://herodigital.com.au/about/): Jeff Cheng and Hero Digital
+- [Contact](https://herodigital.com.au/contact/): Email-first
+- [Privacy](https://herodigital.com.au/legal/privacy/)
+- [Terms](https://herodigital.com.au/legal/terms/)

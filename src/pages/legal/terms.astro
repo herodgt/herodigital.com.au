@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<Base
+  title="Terms"
+  description="Draft terms for Hero Digital’s public offers. Not a substitute for the signed agreement, and not legal advice."
+  path="/legal/terms/"
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Terms of use and of the public offers."
+    lead="The signed service agreement, not this page, is the contract. This is a plain-language summary of how the public offers work. It is not legal advice."
+    crumbs={[
+      { href: '/', label: 'Home' },
+      { href: '/legal/', label: 'Legal' },
+      { href: '/legal/terms/', label: 'Terms' },
+    ]}
+  />
+  <section class="section">
+    <div class="wrap prose">
+      <p>Prices on this site are AUD ex GST. AI Visibility retainers have a 90-day minimum, then month to month with 30 days’ written notice. Targets are aims measured against your baseline and are not guaranteed. We do not promise rankings, recommendations or a number of patients.</p>
+      <p>Website packages are paid 50% upfront, then 10% of the package price each month until the balance is cleared, or you may pay off early. Hero Digital keeps ownership of the code, design and Sanity project until the website is fully paid; you have a licence to use the live site in the meantime. Full transfer happens on payoff.</p>
+      <p>Growth services are only sold after a fit check. Market Leader is by application; an application is not an acceptance. Proposed Market Leader terms include a 12-month minimum and no separate setup fee.</p>
+      <p>This website is provided as general information about our services. It is not clinical, legal or financial advice.</p>
+    </div>
+  </section>
+</Base>

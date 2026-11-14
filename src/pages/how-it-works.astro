@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<Base
+  title="How it works"
+  description="Hero Digital’s written-only process: free audit, written proposal, e-sign and start, then a monthly scoreboard. A call is available only if you ask."
+  path="/how-it-works/"
+>
+  <PageHero
+    eyebrow="Process"
+    title="Written only, from audit to scoreboard."
+    lead="A 20-minute call is available if you ask. We never make a call the price of getting an answer."
+    crumbs={[{ href: '/', label: 'Home' }, { href: '/how-it-works/', label: 'How it works' }]}
+  />
+  <section class="section">
+    <div class="wrap">
+      <div class="steps4">
+        <div class="s4"><div class="n">01</div><h3>Free audit</h3><p>You send a URL and email. We return a branded PDF. If you want a first fix, the $1,495 sprint is there, and that fee is credited toward setup if you later take a plan.</p></div>
+        <div class="s4"><div class="n">02</div><h3>Written proposal</h3><p>Targets, the fixed fee, and the maths using your numbers or defaults you can edit. Questions stay in email. Targets are aims, not guarantees.</p></div>
+        <div class="s4"><div class="n">03</div><h3>E-sign and start</h3><p>Sign and pay the setup fee in one step. An onboarding form starts delivery. No kickoff meeting is required.</p></div>
+        <div class="s4"><div class="n">04</div><h3>Monthly scoreboard</h3><p>A written report of enquiries, AI mentions in our test set, and the next action plan. After 90 days you can leave with 30 days’ notice.</p></div>
+      </div>
+      <div class="btn-row" style="margin-top:40px">
+        <a class="btn btn-primary" href="/free-audit/">Get the free audit</a>
+        <a class="btn btn-ghost" href="/contact/">Write to us instead</a>
+      </div>
+    </div>
+  </section>
+</Base>

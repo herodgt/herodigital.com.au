@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+<Base
+  title="AI visibility for Brisbane implant clinics"
+  description="Hero Digital is based in Brisbane. This is where we start outreach and delivery. A free audit looks at how AI tools answer implant questions in your suburb — not at invented city-wide rankings."
+  path="/dental-implants/brisbane/"
+>
+  <PageHero
+    eyebrow="Dental implants"
+    title="Dental implant clinics in Brisbane and South East Queensland."
+    lead="Hero Digital is based in Brisbane. This is where we start outreach and delivery. A free audit looks at how AI tools answer implant questions in your suburb — not at invented city-wide rankings."
+    crumbs={[
+      { href: '/', label: 'Home' },
+      { href: '/dental-implants/', label: 'Dental implants' },
+      { href: '/dental-implants/brisbane/', label: 'Brisbane' },
+    ]}
+  />
+  <section class="section">
+    <div class="wrap prose">
+      <p>If you place implants or full-arch treatment in Brisbane, the Gold Coast or the Sunshine Coast, the public ladder on this site applies in full. Exclusivity, where it is included in a plan, is measured from your clinic, not advertised as “we already own Brisbane”.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/free-audit/">Get a free audit</a>
+        <a class="btn btn-ghost" href="/dental-implants/pricing/">See dental pricing</a>
+      </div>
+    </div>
+  </section>
+</Base>

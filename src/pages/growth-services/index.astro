@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import PlanGrid from '../../components/PlanGrid.astro';
+import OfferJsonLd from '../../components/OfferJsonLd.astro';
+import { growthTiers } from '../../data/content';
+---
+<Base
+  title="Growth services"
+  description="SEO, link building and Google Ads management for implant clinics, at three published prices: $2,495, $3,995 and $5,995 a month. Sold only after a fit check. Ad spend is separate. AUD ex GST."
+  path="/growth-services/"
+>
+  <OfferJsonLd offers={growthTiers.map((p) => ({ name: `Growth services ${p.name}`, path: '/growth-services/', description: p.who, price: p.price, priceType: 'month' as const }))} />
+  <PageHero
+    eyebrow="Growth services"
+    title="SEO, links and ads — after we check we’re a fit."
+    lead="Prices are public. We still only take a clinic that fits. A good fit starts at the published price, not a custom quote. A clinic that isn’t a fit goes to the waitlist. Tier names and scopes below are proposed."
+    crumbs={[{ href: '/', label: 'Home' }, { href: '/growth-services/', label: 'Growth services' }]}
+  />
+  <section class="section">
+    <div class="wrap">
+      <PlanGrid plans={growthTiers} ctaHref="/growth-services/fit-check/" ctaLabel="Check if we’re a good fit" />
+      <p class="fine" style="margin-top:22px">Google Ads media spend is always paid by the clinic, on top of the management fee. Advanced is the mid-tier included in <a href="/market-leader/">Market Leader</a>.</p>
+      <div class="split" style="margin-top:48px">
+        <article class="block">
+          <h3><a href="/growth-services/seo/">SEO</a></h3>
+          <p>Implant-page technical and on-page work, and supporting pages on the higher tiers. This is not a generic whole-of-site retainer unless that work sits inside the published tier.</p>
+        </article>
+        <article class="block">
+          <h3><a href="/growth-services/link-building/">Link building</a></h3>
+          <p>Pitches and placements for credible mentions — the kind of third-party pages AI tools and Google can both draw on. Volume is set by the tier, not by a custom quote.</p>
+        </article>
+      </div>
+      <article class="block" style="margin-top:22px">
+        <h3><a href="/growth-services/google-ads/">Google Ads management</a></h3>
+        <p>From an account review on Essential, to managed implant and full-arch campaigns on Advanced and Authority. Ad spend is separate. We do not promise a cost per lead or a number of consults.</p>
+      </article>
+    </div>
+  </section>
+</Base>

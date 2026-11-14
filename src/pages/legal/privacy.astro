@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import { SITE } from '../../lib/site';
+---
+<Base
+  title="Privacy"
+  description="Privacy notice for herodigital.com.au. Draft operational wording, not formal legal advice."
+  path="/legal/privacy/"
+>
+  <PageHero
+    eyebrow="Legal"
+    title="Privacy notice."
+    lead="This is an operational draft for the local site, not formal legal advice. It will be reviewed before launch."
+    crumbs={[
+      { href: '/', label: 'Home' },
+      { href: '/legal/', label: 'Legal' },
+      { href: '/legal/privacy/', label: 'Privacy' },
+    ]}
+  />
+  <section class="section">
+    <div class="wrap prose">
+      <p>Hero Digital (Brisbane) collects the details you send through our forms or to <a href={`mailto:${SITE.email}`}>{SITE.email}</a> so we can reply, prepare an audit or proposal, and deliver work you have asked for. We do not sell your details.</p>
+      <p>Form submissions will be posted to a configured endpoint (for example a Cloudflare Worker or Formspree) once that endpoint is set. Until then, submissions on this local preview are not sent.</p>
+      <p>If we later use a CRM such as GoHighLevel, enquiry records will be stored there under our account, with access limited to people who need them to do the work.</p>
+      <p>To ask for a copy, a correction or a deletion of your enquiry details, email {SITE.email}. This notice does not cover a client clinic’s own patient records; we do not want clinical patient data sent through these forms.</p>
+    </div>
+  </section>
+</Base>

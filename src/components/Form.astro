@@ -1,0 +1,208 @@
+---
+import { SITE } from '../lib/site';
+interface Props {
+  type: 'free-audit' | 'fit-check' | 'market-leader' | 'website' | 'contact';
+  theme?: 'light' | 'vip';
+  heading?: string;
+}
+const { type, theme = 'light', heading } = Astro.props;
+const titles: Record<Props['type'], string> = {
+  'free-audit': 'Request your free audit',
+  'fit-check': 'Check if we’re a good fit',
+  'market-leader': 'Request a review',
+  website: 'Enquire about a website',
+  contact: 'Write to us',
+};
+const title = heading ?? titles[type];
+const box = theme === 'vip' ? 'form' : 'form-card light-form';
+---
+<form class={box} data-hero-form method="post" action={SITE.formEndpoint || '/contact/'}>
+  <h2>{title}</h2>
+  <p class="fine">We’ll reply in writing. A call is only booked if you ask for one. {!SITE.formEndpoint && 'This local preview does not send the form until PUBLIC_FORM_ENDPOINT is set.'}</p>
+  <input type="hidden" name="formType" value={type} />
+  <input type="hidden" name="sourcePath" value={Astro.url.pathname} />
+
+  {type === 'free-audit' && (
+    <>
+      <label for={`${type}-url`}>Clinic website</label>
+      <input id={`${type}-url`} name="website" type="url" required placeholder="https://yourclinic.com.au" autocomplete="url" />
+      <div class="form-row">
+        <div>
+          <label for={`${type}-email`}>Email</label>
+          <input id={`${type}-email`} name="email" type="email" required autocomplete="email" />
+        </div>
+        <div>
+          <label for={`${type}-name`}>Your name</label>
+          <input id={`${type}-name`} name="name" type="text" required autocomplete="name" />
+        </div>
+      </div>
+      <label for={`${type}-suburb`}>Suburb or city (optional)</label>
+      <input id={`${type}-suburb`} name="suburb" type="text" placeholder="e.g. Bulimba, Brisbane" />
+    </>
+  )}
+
+  {type === 'fit-check' && (
+    <>
+      <div class="form-row">
+        <div>
+          <label for={`${type}-clinic`}>Clinic name</label>
+          <input id={`${type}-clinic`} name="clinic" type="text" required autocomplete="organization" />
+        </div>
+        <div>
+          <label for={`${type}-website`}>Website</label>
+          <input id={`${type}-website`} name="website" type="url" required placeholder="https://" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for={`${type}-service`}>Service</label>
+          <select id={`${type}-service`} name="service" required>
+            <option value="">Choose one</option>
+            <option>SEO</option>
+            <option>Link building</option>
+            <option>Google Ads management</option>
+            <option>All three</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div>
+          <label for={`${type}-budget`}>Monthly budget band</label>
+          <select id={`${type}-budget`} name="budget">
+            <option value="">Optional</option>
+            <option>Around $2,495 (Essential)</option>
+            <option>Around $3,995 (Advanced)</option>
+            <option>Around $5,995 (Authority)</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for={`${type}-name`}>Your name</label>
+          <input id={`${type}-name`} name="name" type="text" required autocomplete="name" />
+        </div>
+        <div>
+          <label for={`${type}-email`}>Email</label>
+          <input id={`${type}-email`} name="email" type="email" required autocomplete="email" />
+        </div>
+      </div>
+      <label for={`${type}-goals`}>What are you hoping to improve?</label>
+      <textarea id={`${type}-goals`} name="goals" required placeholder="A few sentences is enough."></textarea>
+    </>
+  )}
+
+  {type === 'market-leader' && (
+    <>
+      <p class="fine">Mock applications are reviewed in writing. Submitting does not reserve a city and does not start work.</p>
+      <div class="form-row">
+        <div>
+          <label for={`${type}-clinic`}>Clinic name</label>
+          <input id={`${type}-clinic`} name="clinic" type="text" required autocomplete="organization" placeholder="Practice name" />
+        </div>
+        <div>
+          <label for={`${type}-city`}>City requested</label>
+          <input id={`${type}-city`} name="city" type="text" required placeholder="e.g. Brisbane" />
+        </div>
+      </div>
+      <label for={`${type}-website`}>Clinic website</label>
+      <input id={`${type}-website`} name="website" type="url" required placeholder="https://" />
+      <div class="form-row">
+        <div>
+          <label for={`${type}-principal`}>Principal’s name</label>
+          <input id={`${type}-principal`} name="principal" type="text" required autocomplete="name" />
+        </div>
+        <div>
+          <label for={`${type}-role`}>Your role</label>
+          <input id={`${type}-role`} name="role" type="text" placeholder="Principal, practice manager…" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div>
+          <label for={`${type}-email`}>Email</label>
+          <input id={`${type}-email`} name="email" type="email" required autocomplete="email" />
+        </div>
+        <div>
+          <label for={`${type}-phone`}>Phone</label>
+          <input id={`${type}-phone`} name="phone" type="tel" autocomplete="tel" />
+        </div>
+      </div>
+      <label for={`${type}-reviews`}>Approximate Google review count</label>
+      <input id={`${type}-reviews`} name="reviews" type="text" placeholder="A number is fine — we don’t need it to be exact" />
+      <label for={`${type}-why`}>Why Market Leader, and why now?</label>
+      <textarea id={`${type}-why`} name="why" required placeholder="A few sentences is enough."></textarea>
+      <label class="checkline">
+        <input type="checkbox" name="term" required />
+        <span>I understand Market Leader is proposed as a 12-month commitment, that ad spend is separate, and that any targets later set are aims — not guarantees of recommendations, rankings or patient numbers.</span>
+      </label>
+    </>
+  )}
+
+  {type === 'website' && (
+    <>
+      <div class="form-row">
+        <div>
+          <label for={`${type}-clinic`}>Clinic name</label>
+          <input id={`${type}-clinic`} name="clinic" type="text" required autocomplete="organization" />
+        </div>
+        <div>
+          <label for={`${type}-package`}>Package</label>
+          <select id={`${type}-package`} name="package" required>
+            <option value="">Choose one</option>
+            <option>Launch — $9,995</option>
+            <option>Signature — $14,995</option>
+            <option>Flagship — $19,995</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+      </div>
+      <label for={`${type}-website`}>Current website (if you have one)</label>
+      <input id={`${type}-website`} name="website" type="url" placeholder="https://" />
+      <div class="form-row">
+        <div>
+          <label for={`${type}-name`}>Your name</label>
+          <input id={`${type}-name`} name="name" type="text" required autocomplete="name" />
+        </div>
+        <div>
+          <label for={`${type}-email`}>Email</label>
+          <input id={`${type}-email`} name="email" type="email" required autocomplete="email" />
+        </div>
+      </div>
+      <label for={`${type}-notes`}>Anything we should know?</label>
+      <textarea id={`${type}-notes`} name="notes" placeholder="Timing, number of locations, booking system…"></textarea>
+    </>
+  )}
+
+  {type === 'contact' && (
+    <>
+      <div class="form-row">
+        <div>
+          <label for={`${type}-name`}>Your name</label>
+          <input id={`${type}-name`} name="name" type="text" required autocomplete="name" />
+        </div>
+        <div>
+          <label for={`${type}-email`}>Email</label>
+          <input id={`${type}-email`} name="email" type="email" required autocomplete="email" />
+        </div>
+      </div>
+      <label for={`${type}-topic`}>Topic</label>
+      <select id={`${type}-topic`} name="topic">
+        <option>General question</option>
+        <option>Free audit</option>
+        <option>AI Visibility plans</option>
+        <option>Growth services</option>
+        <option>Website</option>
+        <option>Market Leader</option>
+      </select>
+      <label for={`${type}-message`}>Message</label>
+      <textarea id={`${type}-message`} name="message" required></textarea>
+    </>
+  )}
+
+  <div style="margin-top:18px">
+    <button class:list={['btn', 'btn-primary']} type="submit">
+      {type === 'market-leader' ? 'Submit application' : type === 'free-audit' ? 'Send my audit' : type === 'fit-check' ? 'Submit fit check' : 'Send'}
+    </button>
+  </div>
+  <p class="form-status" role="status"></p>
+  <p class="fine">We’ll only use these details to reply and, where relevant, prepare an audit or proposal. See our <a href="/legal/privacy/">privacy notice</a>.</p>
+</form>

@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import PlanGrid from '../../components/PlanGrid.astro';
+import OfferJsonLd from '../../components/OfferJsonLd.astro';
+import { aiPlans, money } from '../../data/content';
+---
+<Base
+  title="AI Visibility plans"
+  description="Starter $1,995, Growth $2,995 and Premium $4,995 a month, plus $1,995 setup. 90-day minimum. Targets are aims, not guarantees. AUD ex GST."
+  path="/ai-visibility/plans/"
+>
+  <OfferJsonLd offers={aiPlans.map((p) => ({ name: `AI Visibility ${p.name}`, path: '/ai-visibility/plans/', description: p.who, price: p.price, priceType: 'month' as const }))} />
+  <PageHero
+    eyebrow="Plans"
+    title="Starter, Growth and Premium."
+    lead={`Each plan includes a baseline, Ahpra-reviewed implant content, listings, a written monthly scoreboard and email answers within two business days. Setup is ${money(1995)}. An extra location is ${money(1995)} a month plus ${money(995)} setup.`}
+    crumbs={[
+      { href: '/', label: 'Home' },
+      { href: '/ai-visibility/', label: 'AI Visibility' },
+      { href: '/ai-visibility/plans/', label: 'Plans' },
+    ]}
+  />
+  <section class="section">
+    <div class="wrap">
+      <PlanGrid plans={aiPlans} />
+      <p class="fine" style="margin-top:22px">90-day minimum, then month to month with 30 days’ written notice. Targets are aims from your baseline and are not guaranteed. If you have already bought the Fix Sprint, that $1,495 is credited toward setup. Existing Hero SEO clients already receive AI visibility inside their retainer, so these plans are not sold to them.</p>
+    </div>
+  </section>
+</Base>
