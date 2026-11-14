@@ -1,17 +1,17 @@
 ---
 import { NAV } from '../lib/site';
-interface Props { path: string }
-const { path } = Astro.props;
+interface Props { path: string; theme?: 'light' | 'vip' }
+const { path, theme = 'light' } = Astro.props;
 function current(href: string) {
   if (href === '/') return path === '/';
   return path === href || path.startsWith(href);
 }
+const logo = theme === 'vip' ? '/logo-light.svg' : '/logo-dark.svg';
 ---
 <header class="site-header">
   <div class="wrap nav">
     <a class="brand" href="/">
-      <img src="/logo-sm.webp" alt="" width="36" height="36" />
-      <span class="brand-name">Hero Digital<small>Brisbane</small></span>
+      <img class="brand-logo" src={logo} alt="Hero Digital" width="141" height="32" />
     </a>
     <nav class="nav-menu" aria-label="Primary">
       <ul class="nav-links">

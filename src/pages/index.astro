@@ -4,6 +4,8 @@ import FaqList from '../components/FaqList.astro';
 import PlanGrid from '../components/PlanGrid.astro';
 import OfferJsonLd from '../components/OfferJsonLd.astro';
 import { ladder, aiPlans, homeFaqs, money } from '../data/content';
+import LimeBackdrop from '../components/LimeBackdrop.astro';
+import Marquee from '../components/Marquee.astro';
 ---
 <Base
   title="AI visibility for dental implant clinics"
@@ -20,6 +22,7 @@ import { ladder, aiPlans, homeFaqs, money } from '../data/content';
   <section class="hero-band">
     <div class="wrap">
     <div class="hero">
+    <LimeBackdrop />
     <div class="hero-grid">
       <div>
         <p class="eyebrow">For Australian dental implant clinics</p>
@@ -61,8 +64,10 @@ import { ladder, aiPlans, homeFaqs, money } from '../data/content';
     </div>
   </section>
 
+  <Marquee />
+
   <section class="section-sm">
-    <div class="wrap editorial-split">
+    <div class="wrap editorial-split" data-reveal>
       <div>
         <p class="eyebrow">The problem</p>
         <h2 class="problem-heading">Implant patients are asking AI who to book.</h2>
@@ -77,9 +82,9 @@ import { ladder, aiPlans, homeFaqs, money } from '../data/content';
   <section class="section bg-paper" id="pricing">
     <div class="wrap">
       <p class="eyebrow">The offer</p>
-      <h2>A clear ladder, with every price on the page.</h2>
+      <h2 data-reveal>A clear ladder, with every price on the page.</h2>
       <p class="lead">Start with a free audit. Buy a one-off sprint if you want a first fix. Move to a monthly plan when you’re ready. Growth services and websites are productised too — no custom quotes.</p>
-      <div class="ladder" style="margin-top:36px">
+      <div class="ladder ladder-animate" style="margin-top:36px" data-stagger>
         {ladder.map((step) => (
           <article class:list={['step', step.core && 'step-core', step.vip && 'step-vip']}>
             <div class="lvl">{step.level}</div>
@@ -96,9 +101,9 @@ import { ladder, aiPlans, homeFaqs, money } from '../data/content';
   <section class="section" id="plans">
     <div class="wrap">
       <p class="eyebrow">AI Visibility</p>
-      <h2>Three monthly plans, one setup fee.</h2>
+      <h2 data-reveal>Three monthly plans, one setup fee.</h2>
       <p class="lead">Each plan includes a baseline, Ahpra-reviewed implant content, listings, a written monthly scoreboard and email answers within two business days. Extra location: {money(1995)} a month plus {money(995)} setup.</p>
-      <div style="margin-top:36px">
+      <div style="margin-top:36px" data-stagger>
         <PlanGrid plans={aiPlans} />
       </div>
       <p class="fine" style="margin-top:22px">Targets such as extra qualified implant enquiries are aims set from your own baseline. They are reported monthly and are not guaranteed. Existing Hero SEO clients already receive AI visibility inside their retainer, so these plans are not sold to them.</p>
@@ -106,7 +111,7 @@ import { ladder, aiPlans, homeFaqs, money } from '../data/content';
   </section>
 
   <section class="section bg-cream">
-    <div class="wrap split">
+    <div class="wrap split" data-stagger>
       <article class="block">
         <p class="eyebrow">Growth services</p>
         <h3>SEO, links and ads — after a fit check.</h3>
@@ -132,29 +137,47 @@ import { ladder, aiPlans, homeFaqs, money } from '../data/content';
     </div>
   </section>
 
-  <section class="section" id="how-it-works">
-    <div class="wrap">
-      <p class="eyebrow">How it works</p>
-      <h2>Written only, from audit to scoreboard.</h2>
-      <p class="lead">A 20-minute call is available if you ask. We never make a call the price of getting an answer. <a href="/how-it-works/">Read the full process</a>.</p>
-      <div class="steps4" style="margin-top:36px">
-        <div class="s4"><div class="n">01</div><h3>Free audit</h3><p>You send a URL and email. We return a branded PDF. If you want a first fix, the $1,495 sprint is there.</p></div>
-        <div class="s4"><div class="n">02</div><h3>Written proposal</h3><p>Targets, the fixed fee, and the maths using your numbers or defaults you can edit. Questions stay in email.</p></div>
-        <div class="s4"><div class="n">03</div><h3>E-sign and start</h3><p>Sign and pay the setup fee in one step. An onboarding form starts delivery. No kickoff meeting required.</p></div>
-        <div class="s4"><div class="n">04</div><h3>Monthly scoreboard</h3><p>A written report of enquiries, AI mentions in our test set, and the next action plan. You can leave after 90 days.</p></div>
+  <section class="pin-section" id="how-it-works">
+    <div class="wrap pin-grid">
+      <div class="pin-sticky">
+        <p class="eyebrow">How it works</p>
+        <h2>Written only, from audit to scoreboard.</h2>
+        <p class="lead">A 20-minute call is available if you ask. We never make a call the price of getting an answer. <a href="/how-it-works/">Read the full process</a>.</p>
+      </div>
+      <div class="pin-steps">
+        <article class="pin-step is-active">
+          <div class="n">01</div>
+          <h3>Free audit</h3>
+          <p>You send a URL and email. We return a branded PDF. If you want a first fix, the $1,495 sprint is there.</p>
+        </article>
+        <article class="pin-step">
+          <div class="n">02</div>
+          <h3>Written proposal</h3>
+          <p>Targets, the fixed fee, and the maths using your numbers or defaults you can edit. Questions stay in email.</p>
+        </article>
+        <article class="pin-step">
+          <div class="n">03</div>
+          <h3>E-sign and start</h3>
+          <p>Sign and pay the setup fee in one step. An onboarding form starts delivery. No kickoff meeting required.</p>
+        </article>
+        <article class="pin-step">
+          <div class="n">04</div>
+          <h3>Monthly scoreboard</h3>
+          <p>A written report of enquiries, AI mentions in our test set, and the next action plan. You can leave after 90 days.</p>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="section bg-paper" id="ahpra">
-    <div class="wrap ahpra">
+    <div class="wrap ahpra" data-reveal>
       <div>
         <p class="eyebrow">Compliance</p>
         <h2>Built around Ahpra advertising rules, not around them.</h2>
         <p class="lead">Every public asset goes through an AI pre-screen, a human Ahpra reviewer, and your written approval before it goes live. We don’t use patient testimonials, clinical before-and-afters, or wording that guarantees a result.</p>
         <p><a href="/dental-implants/ahpra-compliance/">How we keep implant pages Ahpra-safe →</a></p>
       </div>
-      <div class="checks">
+      <div class="checks" data-stagger>
         <div class="check"><strong>No guaranteed outcomes</strong>Targets are aims from your baseline. They’re reported honestly, including when we’re behind.</div>
         <div class="check"><strong>No patient stories on this site</strong>Case studies, when we have them, will be about clinic marketing work — not clinical results.</div>
         <div class="check"><strong>You approve what goes public</strong>Listings, articles and schema changes wait for your written okay.</div>
@@ -166,7 +189,7 @@ import { ladder, aiPlans, homeFaqs, money } from '../data/content';
     <div class="wrap">
       <p class="eyebrow">Results</p>
       <h2>Case studies come after the pilots, not before.</h2>
-      <div class="placeholder" style="margin-top:24px">
+      <div class="placeholder" data-reveal style="margin-top:24px">
         <strong>Placeholder — no results to show yet.</strong>
         <p style="margin-top:.6rem">The first write-ups will appear here once pilot clinics complete their first 90 days, with numbers taken from their scoreboards. We will not invent statistics, client logos or patient testimonials. If a clinic prefers to stay unnamed, the case will be anonymised. <a href="/results/">Visit the results page</a>.</p>
       </div>
@@ -177,7 +200,7 @@ import { ladder, aiPlans, homeFaqs, money } from '../data/content';
     <div class="wrap">
       <p class="eyebrow">Insights</p>
       <h2>Notes on AI search for implant clinics.</h2>
-      <div class="cards3" style="margin-top:28px">
+      <div class="cards3" style="margin-top:28px" data-stagger>
         <article class="insight"><div class="soon">Coming soon</div><h3>How AI tools decide which implant clinic to name</h3><p class="muted">What we look for in test prompts — and what we can’t control.</p></article>
         <article class="insight"><div class="soon">Coming soon</div><h3>What Ahpra advertising rules mean for implant pages</h3><p class="muted">A practical reading for principals, not legal advice.</p></article>
         <article class="insight"><div class="soon">Coming soon</div><h3>Why Google reviews show up in AI answers</h3><p class="muted">And how we ask for them without writing the review for the patient.</p></article>
@@ -191,6 +214,7 @@ import { ladder, aiPlans, homeFaqs, money } from '../data/content';
   <section class="cta-shell">
     <div class="wrap">
     <div class="cta-band">
+      <LimeBackdrop />
       <p class="eyebrow">Lead magnet</p>
       <h2>Get your free AI visibility audit.</h2>
       <p class="lead">Send your clinic website and the best email to reach the principal or practice manager. We’ll return a branded PDF. No call, and no obligation to buy a plan.</p>

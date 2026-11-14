@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import JsonLd from '../components/JsonLd.astro';
 import { SITE, abs } from '../lib/site';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -35,7 +36,7 @@ const orgLd = {
   url: SITE.url,
   email: SITE.email,
   image: abs('/og-image.png'),
-  logo: abs('/logo.png'),
+  logo: abs('/logo-wordmark.png'),
   areaServed: 'AU',
   founder: { '@type': 'Person', name: SITE.founder },
   address: {
@@ -60,7 +61,8 @@ const graph = [orgLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) :
     <meta name="theme-color" content={theme === "vip" ? "#131314" : SITE.themeColor} />
     <meta name="form-endpoint" content={SITE.formEndpoint} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:locale" content={SITE.locale} />
@@ -76,55 +78,72 @@ const graph = [orgLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) :
     <meta name="twitter:image" content={abs('/og-image.png')} />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
     <JsonLd data={graph} />
+    <ClientRouter />
   </head>
   <body class={theme === 'vip' ? 'page-vip' : 'page-home'}>
     <a class="skip" href="#main">Skip to content</a>
-    <Header path={path} />
+    <Header path={path} theme={theme} />
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer theme={theme} />
     <script>
-      const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
-      const menu = document.querySelector('.nav-menu');
-      toggle?.addEventListener('click', () => {
-        const open = menu?.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
+      import { initMotion } from '../scripts/motion.js';
 
-      const endpoint = (document.querySelector('meta[name="form-endpoint"]') as HTMLMetaElement | null)?.content?.trim();
-      document.querySelectorAll<HTMLFormElement>('form[data-hero-form]').forEach((form) => {
-        form.addEventListener('submit', async (event) => {
-          event.preventDefault();
-          const status = form.querySelector<HTMLElement>('.form-status');
-          const payload = Object.fromEntries(new FormData(form).entries());
-          if (!endpoint) {
-            if (status) {
-              status.className = 'form-status show ok';
-              status.textContent =
-                'This local preview does not send the form. When the site is live, set PUBLIC_FORM_ENDPOINT to a Cloudflare Worker or Formspree URL and this request will be posted there. You can also email jcheng@hero.tt.';
-            }
-            return;
-          }
-          try {
-            const res = await fetch(endpoint, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-              body: JSON.stringify(payload),
-            });
-            if (!res.ok) throw new Error('Request failed');
-            if (status) {
-              status.className = 'form-status show ok';
-              status.textContent = 'Thanks. We’ll reply in writing to the email you gave us.';
-            }
-            form.reset();
-          } catch {
-            if (status) {
-              status.className = 'form-status show err';
-              status.textContent = 'We couldn’t send that just now. Please email jcheng@hero.tt instead.';
-            }
-          }
+      function bindNav() {
+        const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+        const menu = document.querySelector('.nav-menu');
+        if (!toggle || !menu || toggle.dataset.bound) return;
+        toggle.dataset.bound = 'true';
+        toggle.addEventListener('click', () => {
+          const open = menu.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
+      }
+
+      function bindForms() {
+        const endpoint = (document.querySelector('meta[name="form-endpoint"]') as HTMLMetaElement | null)?.content?.trim();
+        document.querySelectorAll<HTMLFormElement>('form[data-hero-form]').forEach((form) => {
+          if (form.dataset.bound) return;
+          form.dataset.bound = 'true';
+          form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const status = form.querySelector<HTMLElement>('.form-status');
+            const payload = Object.fromEntries(new FormData(form).entries());
+            if (!endpoint) {
+              if (status) {
+                status.className = 'form-status show ok';
+                status.textContent =
+                  'This local preview does not send the form. When the site is live, set PUBLIC_FORM_ENDPOINT to a Cloudflare Worker or Formspree URL and this request will be posted there. You can also email jcheng@hero.tt.';
+              }
+              return;
+            }
+            try {
+              const res = await fetch(endpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify(payload),
+              });
+              if (!res.ok) throw new Error('Request failed');
+              if (status) {
+                status.className = 'form-status show ok';
+                status.textContent = 'Thanks. We’ll reply in writing to the email you gave us.';
+              }
+              form.reset();
+            } catch {
+              if (status) {
+                status.className = 'form-status show err';
+                status.textContent = 'We couldn’t send that just now. Please email jcheng@hero.tt instead.';
+              }
+            }
+          });
+        });
+      }
+
+      document.addEventListener('astro:page-load', () => {
+        bindNav();
+        bindForms();
+        initMotion();
       });
     </script>
   </body>

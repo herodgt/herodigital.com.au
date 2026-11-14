@@ -1,0 +1,226 @@
+/* Motion system — vanilla CSS. Disabled under prefers-reduced-motion. */
+
+.lime-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.lime-fallback,
+.lime-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lime-fallback {
+  background-color: var(--color-carbon-ink);
+  background-image:
+    radial-gradient(42% 36% at 82% 12%, rgba(190, 252, 101, 0.42) 0%, rgba(190, 252, 101, 0.08) 42%, transparent 70%),
+    radial-gradient(28% 22% at 70% 48%, rgba(190, 252, 101, 0.18) 0%, transparent 70%),
+    radial-gradient(50% 40% at 8% 92%, rgba(190, 252, 101, 0.22) 0%, transparent 68%),
+    linear-gradient(118deg, transparent 38%, rgba(190, 252, 101, 0.16) 47%, rgba(190, 252, 101, 0.04) 53%, transparent 62%);
+  background-repeat: no-repeat;
+  transform: scale(1.12);
+  animation: lime-drift 22s ease-in-out infinite alternate;
+}
+.lime-video {
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+.lime-video[data-loaded="true"] { opacity: 0.9 }
+.hero,
+.cta-band,
+.vip-hero {
+  isolation: isolate;
+}
+.hero > :not(.lime-stage),
+.cta-band > :not(.lime-stage),
+.vip-hero > :not(.lime-stage) { position: relative; z-index: 1 }
+
+@keyframes lime-drift {
+  from { transform: translate3d(-3%, -2%, 0) scale(1.12) }
+  to { transform: translate3d(4%, 3%, 0) scale(1.2) }
+}
+
+/* Scroll reveals — offscreen only (JS adds .is-pending). No hero hide, no CLS. */
+[data-reveal].is-pending,
+[data-stagger] > .is-pending {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+}
+[data-reveal].is-in,
+[data-stagger] > .is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity .8s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1);
+}
+[data-stagger] > .is-in:nth-child(1) { transition-delay: 0ms }
+[data-stagger] > .is-in:nth-child(2) { transition-delay: 80ms }
+[data-stagger] > .is-in:nth-child(3) { transition-delay: 160ms }
+[data-stagger] > .is-in:nth-child(4) { transition-delay: 240ms }
+[data-stagger] > .is-in:nth-child(5) { transition-delay: 320ms }
+[data-stagger] > .is-in:nth-child(6) { transition-delay: 400ms }
+
+/* Heading line mask (opt-in, used below the fold or as a post-LCP flourish) */
+.reveal-line {
+  display: block;
+  overflow: hidden;
+}
+.reveal-line > span {
+  display: block;
+}
+
+/* Tiles */
+.plan, .step, .block, .insight, .inc, .post-item, .check, .s4 {
+  transition: transform .45s cubic-bezier(.22, 1, .36, 1), border-color .3s ease, background-color .3s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .plan:hover, .step:hover, .block:hover, .post-item:hover, .check:hover {
+    transform: translateY(-3px) scale(1.015);
+    border-color: var(--color-carbon-ink);
+  }
+  .insight:hover { transform: translateY(-3px) }
+  .step-vip:hover, .inc:hover {
+    transform: translateY(-3px) scale(1.015);
+    box-shadow: 0 0 40px rgba(190, 252, 101, 0.12);
+    border-color: rgba(190, 252, 101, 0.45);
+  }
+  .insight:hover::before {
+    box-shadow: inset 0 0 0 1px rgba(190, 252, 101, 0.35);
+  }
+}
+.btn {
+  will-change: transform;
+  transition: background .15s ease, border-color .15s ease, color .15s ease, transform .2s ease;
+}
+
+/* Ticker */
+.ticker {
+  border-top: 1px solid var(--color-divider-ash);
+  border-bottom: 1px solid var(--color-divider-ash);
+  background: var(--color-paper-gray);
+  padding: 18px 0;
+}
+.ticker-viewport { overflow: hidden }
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 42s linear infinite;
+}
+.ticker:hover .ticker-track { animation-play-state: paused }
+.ticker-list {
+  display: flex;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-navigation);
+  font-weight: 400;
+  line-height: 1.56;
+  color: var(--color-carbon-ink);
+  white-space: nowrap;
+}
+.ticker-list li {
+  padding: 0 1.6rem;
+  position: relative;
+}
+.ticker-list li::after {
+  content: "·";
+  position: absolute;
+  right: -0.15rem;
+  color: var(--color-muted-graphite);
+}
+@keyframes ticker {
+  from { transform: translate3d(0, 0, 0) }
+  to { transform: translate3d(-50%, 0, 0) }
+}
+
+/* Sticky scroll-linked steps */
+.pin-section { padding: var(--spacing-96) 0 }
+.pin-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--spacing-64);
+  align-items: start;
+}
+.pin-sticky {
+  position: sticky;
+  top: 112px;
+}
+.pin-steps { display: grid; gap: var(--spacing-24) }
+.pin-step {
+  background: var(--color-cloud-white);
+  border: 1px solid var(--color-divider-ash);
+  border-radius: var(--radius-cards);
+  padding: 28px 24px;
+  transition: border-color .35s ease, background-color .35s ease;
+}
+.pin-step .n {
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  margin-bottom: .5rem;
+}
+.pin-step.is-active {
+  border-color: var(--color-carbon-ink);
+  background: var(--color-cloud-white);
+}
+@media (max-width: 800px) {
+  .pin-grid { grid-template-columns: 1fr; gap: var(--spacing-32) }
+  .pin-sticky { position: static }
+}
+
+/* Pricing ladder entrance */
+.ladder.ladder-animate .step.is-pending {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+}
+
+/* View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: .45s;
+}
+.site-header { view-transition-name: site-header }
+
+@media (prefers-reduced-motion: reduce) {
+  .lime-fallback { animation: none; transform: none }
+  .lime-video { display: none }
+  [data-reveal].is-pending,
+  [data-stagger] > .is-pending,
+  .ladder.ladder-animate .step.is-pending {
+    opacity: 1;
+    transform: none;
+  }
+  .ticker-track { animation: none }
+  .ticker-viewport { overflow: auto }
+  .plan, .step, .block, .insight, .inc, .post-item, .check, .s4, .btn {
+    transition: none;
+  }
+  .plan:hover, .step:hover, .block:hover, .post-item:hover, .check:hover,
+  .step-vip:hover, .inc:hover, .insight:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+@media print {
+  [data-reveal].is-pending,
+  [data-stagger] > .is-pending,
+  .ladder.ladder-animate .step.is-pending {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .ticker-track { animation: none }
+  .lime-video { display: none }
+}

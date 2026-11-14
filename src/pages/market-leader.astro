@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Form from '../components/Form.astro';
 import OfferJsonLd from '../components/OfferJsonLd.astro';
+import LimeBackdrop from '../components/LimeBackdrop.astro';
 ---
 <Base
   title="Market Leader"
@@ -14,6 +15,7 @@ import OfferJsonLd from '../components/OfferJsonLd.astro';
   <section class="vip-band">
     <div class="wrap">
     <div class="vip-hero">
+    <LimeBackdrop />
       <div class="vip-kicker">Market Leader · By application</div>
       <h1>One clinic. One city. The full partnership.</h1>
       <p class="lead">A single VIP package for a principal who wants Premium AI visibility, mid-tier growth services, and a Signature website under one monthly fee. Places are limited to one Market Leader clinic per city, and an application is not an acceptance.</p>
@@ -37,7 +39,7 @@ import OfferJsonLd from '../components/OfferJsonLd.astro';
       <div class="lime-rule"></div>
       <p class="eyebrow center" >What’s included</p>
       <h2 class="center">The whole stack, in one retainer.</h2>
-      <div class="include" style="margin-top:36px">
+      <div class="include" data-stagger style="margin-top:36px">
         <article class="inc">
           <h3>Premium AI Visibility</h3>
           <p>150 searches tracked, a full-arch content hub, eight Ahpra-reviewed pieces a month, a monthly media placement, fortnightly checks and the written scoreboard. Targets remain aims from your baseline, not a guarantee.</p>

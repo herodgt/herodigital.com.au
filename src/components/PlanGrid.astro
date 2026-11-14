@@ -3,7 +3,7 @@ import { money, type Plan } from '../data/content';
 interface Props { plans: Plan[]; ctaHref?: string; ctaLabel?: string }
 const { plans, ctaHref = '/free-audit/', ctaLabel = 'Get the free audit first' } = Astro.props;
 ---
-<div class="plans">
+<div class="plans" data-stagger>
   {plans.map((plan) => (
     <article class:list={['plan', plan.featured && 'featured']}>
       {plan.featured && plan.id === 'growth' && <div class="tag">Mid plan</div>}

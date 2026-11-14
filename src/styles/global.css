@@ -1,6 +1,7 @@
 @import "@fontsource/inter/latin-400.css";
 @import "@fontsource/inter/latin-500.css";
 @import "@fontsource/inter/latin-600.css";
+@import "./motion.css";
 
 /* Hero Digital — Bejamas-inspired visual language.
    Tokens and layout only. Inter substitutes for Neue Montreal.
@@ -286,21 +287,16 @@ p:last-child { margin-bottom: 0 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 80px; gap: 1rem }
 .brand { display: flex; align-items: center; gap: .7rem; text-decoration: none; color: var(--color-carbon-ink) }
 .brand:hover { text-decoration: none }
-.brand img { width: 36px; height: 36px; border-radius: 9px }
-.brand-name {
-  font-weight: var(--font-weight-medium);
-  letter-spacing: 0;
-  font-size: var(--text-navigation);
-  line-height: 1.15;
-}
-.brand-name small {
+.brand-logo,
+.brand img.brand-logo {
   display: block;
-  font-weight: var(--font-weight-regular);
-  font-size: 12px;
-  color: var(--color-muted-graphite);
-  letter-spacing: 0;
-  text-transform: none;
-  margin-top: .12rem;
+  width: 141px;
+  height: 32px;
+  border-radius: 0;
+}
+@media (max-width: 600px) {
+  .brand-logo,
+  .brand img.brand-logo { width: 123px; height: 28px }
 }
 .nav-links { display: flex; align-items: center; gap: .1rem; list-style: none; margin: 0; padding: 0 }
 .nav-links a {
@@ -362,18 +358,12 @@ p:last-child { margin-bottom: 0 }
   .nav-toggle { display: none !important }
 }
 
-/* Abstract lime light on carbon — CSS only, no photographic source */
+/* Carbon panels — animated lime light lives in .lime-stage */
 .lime-light,
 .hero,
 .cta-band,
 .vip-hero {
   background-color: var(--color-carbon-ink);
-  background-image:
-    radial-gradient(42% 36% at 82% 12%, rgba(190, 252, 101, 0.42) 0%, rgba(190, 252, 101, 0.08) 42%, transparent 70%),
-    radial-gradient(28% 22% at 70% 48%, rgba(190, 252, 101, 0.18) 0%, transparent 70%),
-    radial-gradient(50% 40% at 8% 92%, rgba(190, 252, 101, 0.22) 0%, transparent 68%),
-    linear-gradient(118deg, transparent 38%, rgba(190, 252, 101, 0.16) 47%, rgba(190, 252, 101, 0.04) 53%, transparent 62%);
-  background-repeat: no-repeat;
 }
 
 /* Immersive hero panel */

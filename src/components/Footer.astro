@@ -1,13 +1,15 @@
 ---
 import { SITE, FINE_PRINT } from '../lib/site';
+interface Props { theme?: 'light' | 'vip' }
+const { theme = 'light' } = Astro.props;
+const logo = theme === 'vip' ? '/logo-light.svg' : '/logo-dark.svg';
 ---
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
       <div>
         <a class="brand" href="/" style="margin-bottom:14px">
-          <img src="/logo-sm.webp" alt="" width="36" height="36" />
-          <span class="brand-name">Hero Digital<small>Brisbane</small></span>
+          <img class="brand-logo" src={logo} alt="Hero Digital" width="141" height="32" />
         </a>
         <p>AI and Google visibility for Australian dental implant clinics. Written-only delivery, from Brisbane.</p>
       </div>

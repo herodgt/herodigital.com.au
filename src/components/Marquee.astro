@@ -1,0 +1,30 @@
+---
+const items = [
+  'ChatGPT',
+  'Perplexity',
+  'Gemini',
+  'Google AI Overviews',
+  'AI Visibility',
+  'Fix Sprint',
+  'Implant pages',
+  'Listings and reviews',
+  'Schema',
+  'Written scoreboards',
+  'Ahpra-safe copy',
+  'Growth services',
+  'Websites',
+  'Market Leader',
+];
+---
+<div class="ticker" role="region" aria-label="Services and AI engines we work with">
+  <div class="ticker-viewport">
+    <div class="ticker-track">
+      <ul class="ticker-list">
+        {items.map((item) => <li>{item}</li>)}
+      </ul>
+      <ul class="ticker-list" aria-hidden="true">
+        {items.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</div>
