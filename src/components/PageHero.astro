@@ -1,5 +1,6 @@
 ---
 import Breadcrumbs from './Breadcrumbs.astro';
+import LimeBackdrop from './LimeBackdrop.astro';
 interface Crumb { href: string; label: string }
 interface Props {
   eyebrow?: string;
@@ -10,6 +11,7 @@ interface Props {
 const { eyebrow, title, lead, crumbs } = Astro.props;
 ---
 <section class="page-hero">
+  <LimeBackdrop />
   <div class="wrap">
     {crumbs && crumbs.length > 0 && <Breadcrumbs items={crumbs} />}
     {eyebrow && <p class="eyebrow">{eyebrow}</p>}

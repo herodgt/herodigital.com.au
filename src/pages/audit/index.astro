@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import LimeBackdrop from '../../components/LimeBackdrop.astro';
+const requested = Astro.url.searchParams.get('url') || '';
+---
+<Base
+  title="Instant AI visibility audit"
+  description="A technical crawl of a public clinic website: HTTPS, robots.txt, llms.txt, schema, title and H1, NAP, sitemap and speed. AI-answer testing is reserved for the full report. Targets are aims, not guarantees."
+  path="/audit/"
+  noindex={true}
+>
+  <section class="hero-band">
+    <div class="hero">
+      <LimeBackdrop />
+      <div class="wrap">
+        <p class="eyebrow">Instant technical audit</p>
+        <h1>See the technical score, then request the full report.</h1>
+        <p class="lead">Enter a clinic website. We’ll crawl the public pages and return a score with pass or fail checks and the top fixes. Whether ChatGPT and other tools actually recommend the clinic is in the branded PDF — those numbers are never invented here.</p>
+        <form class="audit-form" id="audit" data-audit-form action="/audit/" method="get">
+          <label class="sr-only" for="audit-url">Enter your website</label>
+          <input id="audit-url" name="url" type="url" required placeholder="Enter your website" autocomplete="url" inputmode="url" value={requested} />
+          <button class="btn btn-primary" type="submit">Get instant audit</button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="section audit-panel" id="audit-results" hidden></section>
+</Base>

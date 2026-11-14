@@ -1,6 +1,31 @@
-# Older prototype URLs (only needed if those paths were ever live)
-/free-ai-visibility-audit /free-audit/ 301
-/free-ai-visibility-audit/ /free-audit/ 301
+# Retired or renamed routes
+/pricing /ai-visibility/ 301
+/pricing/ /ai-visibility/ 301
+/market-leader /hero-one/ 301
+/market-leader/ /hero-one/ 301
+/results / 301
+/results/ / 301
+/insights / 301
+/insights/ / 301
+/insights/* / 301
+/dental-implants/pricing /dental-implants/ 301
+/dental-implants/pricing/ /dental-implants/ 301
+/growth-services /growth/ 301
+/growth-services/ /growth/ 301
+/growth-services/fit-check /growth/fit-check/ 301
+/growth-services/fit-check/ /growth/fit-check/ 301
+/growth-services/seo /growth/seo/ 301
+/growth-services/seo/ /growth/seo/ 301
+/growth-services/link-building /growth/link-building/ 301
+/growth-services/link-building/ /growth/link-building/ 301
+/growth-services/google-ads /growth/google-ads/ 301
+/growth-services/google-ads/ /growth/google-ads/ 301
+/free-audit / 301
+/free-audit/ / 301
+/free-ai-visibility-audit / 301
+/free-ai-visibility-audit/ / 301
+/ai-visibility/plans /ai-visibility/ 301
+/ai-visibility/plans/ /ai-visibility/ 301
 /ahpra-compliance /dental-implants/ahpra-compliance/ 301
 /ahpra-compliance/ /dental-implants/ahpra-compliance/ 301
 /privacy /legal/privacy/ 301

@@ -19,27 +19,29 @@
 .lime-fallback {
   background-color: var(--color-carbon-ink);
   background-image:
-    radial-gradient(42% 36% at 82% 12%, rgba(190, 252, 101, 0.42) 0%, rgba(190, 252, 101, 0.08) 42%, transparent 70%),
-    radial-gradient(28% 22% at 70% 48%, rgba(190, 252, 101, 0.18) 0%, transparent 70%),
-    radial-gradient(50% 40% at 8% 92%, rgba(190, 252, 101, 0.22) 0%, transparent 68%),
-    linear-gradient(118deg, transparent 38%, rgba(190, 252, 101, 0.16) 47%, rgba(190, 252, 101, 0.04) 53%, transparent 62%);
+    radial-gradient(46% 38% at 80% 18%, rgba(190, 252, 101, 0.28) 0%, rgba(190, 252, 101, 0.06) 38%, transparent 72%),
+    radial-gradient(32% 24% at 22% 78%, rgba(190, 252, 101, 0.14) 0%, transparent 70%);
   background-repeat: no-repeat;
-  transform: scale(1.12);
+  filter: blur(48px);
+  transform: scale(1.2);
+  opacity: 0.85;
   animation: lime-drift 22s ease-in-out infinite alternate;
 }
 .lime-video {
   opacity: 0;
   transition: opacity .8s ease;
 }
-.lime-video[data-loaded="true"] { opacity: 0.9 }
+.lime-video[data-loaded="true"] { opacity: 0.72; filter: saturate(0.85) contrast(0.95) }
 .hero,
 .cta-band,
-.vip-hero {
+.vip-hero,
+.page-hero {
   isolation: isolate;
 }
 .hero > :not(.lime-stage),
 .cta-band > :not(.lime-stage),
-.vip-hero > :not(.lime-stage) { position: relative; z-index: 1 }
+.vip-hero > :not(.lime-stage),
+.page-hero > :not(.lime-stage) { position: relative; z-index: 1 }
 
 @keyframes lime-drift {
   from { transform: translate3d(-3%, -2%, 0) scale(1.12) }

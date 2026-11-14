@@ -14,55 +14,37 @@ import Marquee from '../components/Marquee.astro';
 >
   <OfferJsonLd offers={[
     { name: 'AI Visibility Fix Sprint', path: '/ai-visibility/fix-sprint/', description: 'One-off technical and content sprint, re-audited after 30 days.', price: 1495, priceType: 'one-off' },
-    { name: 'AI Visibility Starter', path: '/ai-visibility/plans/', description: 'Monthly AI visibility retainer for implant clinics.', price: 1995, priceType: 'month' },
-    { name: 'AI Visibility Growth', path: '/ai-visibility/plans/', description: 'Monthly AI visibility retainer for competitive suburbs.', price: 2995, priceType: 'month' },
-    { name: 'AI Visibility Premium', path: '/ai-visibility/plans/', description: 'Monthly AI visibility retainer for full-arch centres.', price: 4995, priceType: 'month' },
+    { name: 'AI Visibility Starter', path: '/ai-visibility/', description: 'Monthly AI visibility retainer for implant clinics.', price: 1995, priceType: 'month' },
+    { name: 'AI Visibility Growth', path: '/ai-visibility/', description: 'Monthly AI visibility retainer for competitive suburbs.', price: 2995, priceType: 'month' },
+    { name: 'AI Visibility Premium', path: '/ai-visibility/', description: 'Monthly AI visibility retainer for full-arch centres.', price: 4995, priceType: 'month' },
   ]} />
 
   <section class="hero-band">
-    <div class="wrap">
     <div class="hero">
     <LimeBackdrop />
+    <div class="wrap">
     <div class="hero-grid">
       <div>
         <p class="eyebrow">For Australian dental implant clinics</p>
         <h1>Be the clinic AI tools actually name.</h1>
         <p class="lead">Patients now ask ChatGPT, Perplexity, Gemini and Google’s AI answers who to see for implants or All-on-4. Hero Digital works on the pages, listings, reviews and citations those tools draw on — then shows you, in writing, what changed.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary" href="/free-audit/">Get your free AI visibility audit</a>
-          <a class="btn btn-ghost" href="/pricing/">See the service ladder</a>
-        </div>
+        <form class="audit-form" id="audit" data-audit-form action="/audit/" method="get">
+          <label class="sr-only" for="audit-url">Enter your website</label>
+          <input id="audit-url" name="url" type="url" required placeholder="Enter your website" autocomplete="url" inputmode="url" />
+          <button class="btn btn-primary" type="submit">Get instant audit</button>
+          <p class="form-status" role="status"></p>
+        </form>
         <div class="micro">
           <span>No call required</span>
           <span>Prices published, AUD ex GST</span>
           <span>Targets are aims, not guarantees</span>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="ai-card">
-          <div class="ai-top"><span class="dots"><i></i><i></i><i></i></span> Example AI answer · placeholder only</div>
-          <div class="ai-body">
-            <div class="q-bubble">Who should I see for dental implants in [suburb]?</div>
-            <div class="a-block">
-              <div class="a-icon"></div>
-              <div class="a-text">
-                Here’s an illustrative shortlist. These names are placeholders, not real clinics and not a result we claim:
-                <ol>
-                  <li><span class="hl">Example Clinic A (placeholder)</span><span class="cite">example</span></li>
-                  <li>Example Clinic B (placeholder)</li>
-                  <li>Example Clinic C (placeholder)</li>
-                </ol>
-              </div>
-            </div>
-          </div>
-          <div class="ai-foot">Stylised example for the homepage. A real audit uses dated prompts, named engines and your actual suburb.</div>
-        </div>
-        <div class="float f2"><span class="badge">?</span><div><b>Your clinic</b>Not named in this example</div></div>
-      </div>
     </div>
     </div>
-    </div>
+  </div>
   </section>
+  <section class="section audit-panel" id="audit-results" hidden></section>
 
   <Marquee />
 
@@ -121,7 +103,7 @@ import Marquee from '../components/Marquee.astro';
           <li><strong>Advanced — $3,995/mo</strong> (proposed, mid-tier). Full implant SEO programme, 4 pitches or placements, managed implant search campaigns.</li>
           <li><strong>Authority — $5,995/mo</strong> (proposed). City-wide implant and full-arch SEO, 8 pitches or placements, search plus remarketing.</li>
         </ul>
-        <a class="btn btn-dark" href="/growth-services/fit-check/">Check if we’re a good fit</a>
+        <a class="btn btn-dark" href="/growth/fit-check/">Check if we’re a good fit</a>
       </article>
       <article class="block">
         <p class="eyebrow">Websites</p>
@@ -148,7 +130,7 @@ import Marquee from '../components/Marquee.astro';
         <article class="pin-step is-active">
           <div class="n">01</div>
           <h3>Free audit</h3>
-          <p>You send a URL and email. We return a branded PDF. If you want a first fix, the $1,495 sprint is there.</p>
+          <p>Enter a URL for an instant technical score. Email us for the full branded PDF, including AI-answer tests. If you want a first fix, the $1,495 sprint is there.</p>
         </article>
         <article class="pin-step">
           <div class="n">02</div>
@@ -191,7 +173,7 @@ import Marquee from '../components/Marquee.astro';
       <h2>Case studies come after the pilots, not before.</h2>
       <div class="placeholder" data-reveal style="margin-top:24px">
         <strong>Placeholder — no results to show yet.</strong>
-        <p style="margin-top:.6rem">The first write-ups will appear here once pilot clinics complete their first 90 days, with numbers taken from their scoreboards. We will not invent statistics, client logos or patient testimonials. If a clinic prefers to stay unnamed, the case will be anonymised. <a href="/results/">Visit the results page</a>.</p>
+        <p style="margin-top:.6rem">The first write-ups will appear here once pilot clinics complete their first 90 days, with numbers taken from their scoreboards. We will not invent statistics, client logos or patient testimonials. If a clinic prefers to stay unnamed, the case will be anonymised. We will add them to this page, not to a separate results index.</p>
       </div>
     </div>
   </section>
@@ -205,7 +187,6 @@ import Marquee from '../components/Marquee.astro';
         <article class="insight"><div class="soon">Coming soon</div><h3>What Ahpra advertising rules mean for implant pages</h3><p class="muted">A practical reading for principals, not legal advice.</p></article>
         <article class="insight"><div class="soon">Coming soon</div><h3>Why Google reviews show up in AI answers</h3><p class="muted">And how we ask for them without writing the review for the patient.</p></article>
       </div>
-      <p style="margin-top:20px"><a href="/insights/">See all planned insights →</a></p>
     </div>
   </section>
 
@@ -219,7 +200,7 @@ import Marquee from '../components/Marquee.astro';
       <h2>Get your free AI visibility audit.</h2>
       <p class="lead">Send your clinic website and the best email to reach the principal or practice manager. We’ll return a branded PDF. No call, and no obligation to buy a plan.</p>
       <div class="btn-row" style="justify-content:center;margin-top:16px">
-        <a class="btn btn-primary" href="/free-audit/">Request the free audit</a>
+        <a class="btn btn-primary" href="/#audit">Get an instant audit</a>
       </div>
     </div>
     </div>

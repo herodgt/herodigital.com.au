@@ -1,12 +1,16 @@
 ---
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
+import PlanGrid from '../../components/PlanGrid.astro';
+import OfferJsonLd from '../../components/OfferJsonLd.astro';
+import { aiPlans, money } from '../../data/content';
 ---
 <Base
   title="AI visibility for dental implant clinics"
   description="Hero Digital works with Australian dental implant and full-arch clinics on AI and Google visibility. Start with a free audit. Targets are aims, not guarantees."
   path="/dental-implants/"
 >
+  <OfferJsonLd offers={aiPlans.map((p) => ({ name: `AI Visibility ${p.name}`, path: '/ai-visibility/', description: p.who, price: p.price, priceType: 'month' as const }))} />
   <PageHero
     eyebrow="Dental implants"
     title="Built for implant and full-arch clinics, not for every dentist."
@@ -17,8 +21,8 @@ import PageHero from '../../components/PageHero.astro';
     <div class="wrap">
       <div class="split">
         <article class="block">
-          <h3><a href="/dental-implants/pricing/">Dental pricing</a></h3>
-          <p>The same public ladder, written for implant principals: free audit, $1,495 sprint, then Starter, Growth and Premium.</p>
+          <h3><a href="/ai-visibility/">AI Visibility pricing</a></h3>
+          <p>The same public ladder, written for implant principals: instant audit, $1,495 sprint, then Starter, Growth and Premium.</p>
         </article>
         <article class="block">
           <h3><a href="/dental-implants/ahpra-compliance/">Ahpra compliance</a></h3>
@@ -26,9 +30,15 @@ import PageHero from '../../components/PageHero.astro';
         </article>
         <article class="block">
           <h3><a href="/dental-implants/full-arch/">Full-arch and All-on-4</a></h3>
-          <p>The Premium plan and Market Leader are designed for centres competing on full-arch questions across a city.</p>
+          <p>The Premium plan and Hero One are designed for centres competing on full-arch questions across a city.</p>
         </article>
       </div>
+      <h2 id="pricing" style="margin-top:48px">What an implant clinic actually pays.</h2>
+      <p class="lead">The figures below are the same public prices as the rest of the site. Setup is {money(1995)}. The $1,495 Fix Sprint is credited toward setup if you then take a plan.</p>
+      <div style="margin-top:28px">
+        <PlanGrid plans={aiPlans} />
+      </div>
+      <p class="fine" style="margin-top:22px">Extra location {money(1995)} a month plus {money(995)} setup. Growth and website packages live on their own pages. Hero One is $9,995 a month, by application.</p>
       <h2 style="margin-top:48px">City pages</h2>
       <p class="lead">Local pages for the first cities we are building out. We do not invent local case numbers.</p>
       <div class="city-grid" style="margin-top:20px">
@@ -37,7 +47,7 @@ import PageHero from '../../components/PageHero.astro';
         <a class="block" href="/dental-implants/melbourne/"><h3>Melbourne</h3><p>A planned city page for implant clinics in Greater Melbourne.</p></a>
       </div>
       <div class="btn-row" style="margin-top:36px">
-        <a class="btn btn-primary" href="/free-audit/">Get a free audit</a>
+        <a class="btn btn-primary" href="/#audit">Get a free audit</a>
         <a class="btn btn-ghost" href="/ai-visibility/">How AI visibility works</a>
       </div>
     </div>

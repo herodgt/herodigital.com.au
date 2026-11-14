@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import LimeBackdrop from '../components/LimeBackdrop.astro';
 ---
 <Base
   title="Page not found"
@@ -8,13 +9,14 @@ import Base from '../layouts/Base.astro';
   noindex={true}
 >
   <section class="page-hero">
+    <LimeBackdrop />
     <div class="wrap">
       <p class="eyebrow">404</p>
       <h1>That page isn’t here.</h1>
-      <p class="lead">It may have moved when we reorganised the site. Try the home page, the pricing ladder or the free audit.</p>
+      <p class="lead">It may have moved when we reorganised the site. Try the home page, AI Visibility, or the instant audit.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="/">Go home</a>
-        <a class="btn btn-ghost" href="/pricing/">See pricing</a>
+        <a class="btn btn-ghost" href="/ai-visibility/">AI Visibility</a>
       </div>
     </div>
   </section>

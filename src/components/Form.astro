@@ -1,7 +1,7 @@
 ---
 import { SITE } from '../lib/site';
 interface Props {
-  type: 'free-audit' | 'fit-check' | 'market-leader' | 'website' | 'contact';
+  type: 'free-audit' | 'fit-check' | 'market-leader' | 'hero-one' | 'website' | 'contact';
   theme?: 'light' | 'vip';
   heading?: string;
 }
@@ -10,6 +10,7 @@ const titles: Record<Props['type'], string> = {
   'free-audit': 'Request your free audit',
   'fit-check': 'Check if we’re a good fit',
   'market-leader': 'Request a review',
+  'hero-one': 'Request a review',
   website: 'Enquire about a website',
   contact: 'Write to us',
 };
@@ -91,7 +92,7 @@ const box = theme === 'vip' ? 'form' : 'form-card light-form';
     </>
   )}
 
-  {type === 'market-leader' && (
+  {(type === 'market-leader' || type === 'hero-one') && (
     <>
       <p class="fine">Mock applications are reviewed in writing. Submitting does not reserve a city and does not start work.</p>
       <div class="form-row">
@@ -128,11 +129,11 @@ const box = theme === 'vip' ? 'form' : 'form-card light-form';
       </div>
       <label for={`${type}-reviews`}>Approximate Google review count</label>
       <input id={`${type}-reviews`} name="reviews" type="text" placeholder="A number is fine — we don’t need it to be exact" />
-      <label for={`${type}-why`}>Why Market Leader, and why now?</label>
+      <label for={`${type}-why`}>Why Hero One, and why now?</label>
       <textarea id={`${type}-why`} name="why" required placeholder="A few sentences is enough."></textarea>
       <label class="checkline">
         <input type="checkbox" name="term" required />
-        <span>I understand Market Leader is proposed as a 12-month commitment, that ad spend is separate, and that any targets later set are aims — not guarantees of recommendations, rankings or patient numbers.</span>
+        <span>I understand Hero One is proposed as a 12-month commitment, that ad spend is separate, and that any targets later set are aims — not guarantees of recommendations, rankings or patient numbers.</span>
       </label>
     </>
   )}
@@ -191,7 +192,7 @@ const box = theme === 'vip' ? 'form' : 'form-card light-form';
         <option>AI Visibility plans</option>
         <option>Growth services</option>
         <option>Website</option>
-        <option>Market Leader</option>
+        <option>Hero One</option>
       </select>
       <label for={`${type}-message`}>Message</label>
       <textarea id={`${type}-message`} name="message" required></textarea>
@@ -200,7 +201,7 @@ const box = theme === 'vip' ? 'form' : 'form-card light-form';
 
   <div style="margin-top:18px">
     <button class:list={['btn', 'btn-primary']} type="submit">
-      {type === 'market-leader' ? 'Submit application' : type === 'free-audit' ? 'Send my audit' : type === 'fit-check' ? 'Submit fit check' : 'Send'}
+      {type === 'market-leader' || type === 'hero-one' ? 'Submit application' : type === 'free-audit' ? 'Send my audit' : type === 'fit-check' ? 'Submit fit check' : 'Send'}
     </button>
   </div>
   <p class="form-status" role="status"></p>

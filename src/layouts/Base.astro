@@ -11,6 +11,7 @@ interface Props {
   description?: string;
   path: string;
   theme?: 'light' | 'vip';
+  overlay?: boolean;
   ogType?: string;
   jsonLd?: object | object[];
   noindex?: boolean;
@@ -21,6 +22,7 @@ const {
   description = SITE.description,
   path,
   theme = 'light',
+  overlay = true,
   ogType = 'website',
   jsonLd,
   noindex = false,
@@ -58,7 +60,7 @@ const graph = [orgLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) :
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     {!noindex && <meta name="robots" content="index, follow, max-image-preview:large" />}
     <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content={theme === "vip" ? "#131314" : SITE.themeColor} />
+    <meta name="theme-color" content={overlay ? "#131314" : SITE.themeColor} />
     <meta name="form-endpoint" content={SITE.formEndpoint} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
@@ -80,15 +82,16 @@ const graph = [orgLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) :
     <JsonLd data={graph} />
     <ClientRouter />
   </head>
-  <body class={theme === 'vip' ? 'page-vip' : 'page-home'}>
+  <body class:list={[theme === 'vip' ? 'page-vip' : 'page-home', overlay && 'has-overlay']}>
     <a class="skip" href="#main">Skip to content</a>
-    <Header path={path} theme={theme} />
+    <Header path={path} overlay={overlay} />
     <main id="main">
       <slot />
     </main>
-    <Footer theme={theme} />
+    <Footer />
     <script>
       import { initMotion } from '../scripts/motion.js';
+      import { initAuditForms } from '../scripts/audit-form.js';
 
       function bindNav() {
         const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
@@ -143,6 +146,7 @@ const graph = [orgLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) :
       document.addEventListener('astro:page-load', () => {
         bindNav();
         bindForms();
+        initAuditForms();
         initMotion();
       });
     </script>

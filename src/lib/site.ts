@@ -18,11 +18,9 @@ export const SITE = {
 
 export const NAV = [
   { href: '/ai-visibility/', label: 'AI Visibility' },
-  { href: '/pricing/', label: 'Pricing' },
-  { href: '/growth-services/', label: 'Growth Services' },
+  { href: '/growth/', label: 'Growth' },
   { href: '/websites/', label: 'Websites' },
-  { href: '/results/', label: 'Results' },
-  { href: '/insights/', label: 'Insights' },
+  { href: '/hero-one/', label: 'Hero One' },
 ] as const;
 
 export function abs(path: string): string {

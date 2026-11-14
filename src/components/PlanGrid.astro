@@ -1,7 +1,7 @@
 ---
 import { money, type Plan } from '../data/content';
 interface Props { plans: Plan[]; ctaHref?: string; ctaLabel?: string }
-const { plans, ctaHref = '/free-audit/', ctaLabel = 'Get the free audit first' } = Astro.props;
+const { plans, ctaHref = '/#audit', ctaLabel = 'Get the free audit first' } = Astro.props;
 ---
 <div class="plans" data-stagger>
   {plans.map((plan) => (
