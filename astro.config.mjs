@@ -6,6 +6,9 @@ export default defineConfig({
   site: 'https://herodigital.com.au',
   trailingSlash: 'always',
   output: 'static',
+  vite: {
+    envPrefix: ['PUBLIC_', 'SANITY_'],
+  },
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/404'),

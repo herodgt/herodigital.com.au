@@ -104,7 +104,7 @@ export async function getPosts(): Promise<Post[]> {
   if (!c) return posts;
   try {
     const data = await c.fetch<Post[]>(
-      `*[_type == "post"] | order(_createdAt desc){slug,title,excerpt,status,date,body}`
+      `*[_type == "post"] | order(_createdAt desc){"slug": slug.current,title,excerpt,status,date,body}`
     );
     return data?.length ? data : posts;
   } catch {
@@ -125,5 +125,28 @@ export async function getCaseStudies(): Promise<never[]> {
     return data ?? [];
   } catch {
     return [];
+  }
+}
+
+export type CmsPage = {
+  title: string;
+  slug: string;
+  eyebrow?: string;
+  lead?: string;
+};
+
+const fallbackPages: CmsPage[] = [];
+
+export async function getPage(slug: string): Promise<CmsPage | undefined> {
+  const c = client();
+  if (!c) return fallbackPages.find((p) => p.slug === slug);
+  try {
+    const data = await c.fetch<CmsPage | null>(
+      `*[_type == "page" && slug.current == $slug][0]{title,"slug": slug.current,eyebrow,lead}`,
+      { slug }
+    );
+    return data ?? undefined;
+  } catch {
+    return undefined;
   }
 }

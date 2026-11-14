@@ -25,3 +25,7 @@ pnpm-debug.log*
 # local QA screenshots and Lighthouse reports
 screens/
 screens/*.json
+
+# Wrangler
+.wrangler/
+.dev.vars
