@@ -6,6 +6,7 @@ import OfferJsonLd from '../components/OfferJsonLd.astro';
 import { ladder, aiPlans, homeFaqs, money } from '../data/content';
 import LimeBackdrop from '../components/LimeBackdrop.astro';
 import Marquee from '../components/Marquee.astro';
+import HeroAiDemo from '../components/HeroAiDemo.astro';
 ---
 <Base
   title="AI visibility for dental implant clinics"
@@ -21,13 +22,13 @@ import Marquee from '../components/Marquee.astro';
 
   <section class="hero-band">
     <div class="hero">
-    <LimeBackdrop />
+    <LimeBackdrop parallax />
     <div class="wrap">
     <div class="hero-grid">
       <div>
         <p class="eyebrow">For Australian dental implant clinics</p>
         <h1>Be the clinic AI tools actually name.</h1>
-        <p class="lead">Patients now ask ChatGPT, Perplexity, Gemini and Google’s AI answers who to see for implants or All-on-4. Hero Digital works on the pages, listings, reviews and citations those tools draw on — then shows you, in writing, what changed.</p>
+        <p class="lead">Patients now ask ChatGPT, Perplexity, Gemini and Google’s AI answers who to see for implants or All-on-4. Hero Digital works on the pages, listings, reviews and citations those tools draw on, then shows you, in writing, what changed.</p>
         <form class="audit-form" id="audit" data-audit-form action="/audit/" method="get">
           <label class="sr-only" for="audit-url">Enter your website</label>
           <input id="audit-url" name="url" type="url" required placeholder="Enter your website" autocomplete="url" inputmode="url" />
@@ -40,6 +41,7 @@ import Marquee from '../components/Marquee.astro';
           <span>Targets are aims, not guarantees</span>
         </div>
       </div>
+      <HeroAiDemo />
     </div>
     </div>
   </div>
@@ -65,7 +67,7 @@ import Marquee from '../components/Marquee.astro';
     <div class="wrap">
       <p class="eyebrow">The offer</p>
       <h2 data-reveal>A clear ladder, with every price on the page.</h2>
-      <p class="lead">Start with a free audit. Buy a one-off sprint if you want a first fix. Move to a monthly plan when you’re ready. Growth services and websites are productised too — no custom quotes.</p>
+      <p class="lead">Start with a free audit. Buy a one-off sprint if you want a first fix. Move to a monthly plan when you’re ready. Growth services and websites are productised too, no custom quotes.</p>
       <div class="ladder ladder-animate" style="margin-top:36px" data-stagger>
         {ladder.map((step) => (
           <article class:list={['step', step.core && 'step-core', step.vip && 'step-vip']}>
@@ -96,12 +98,12 @@ import Marquee from '../components/Marquee.astro';
     <div class="wrap split" data-stagger>
       <article class="block">
         <p class="eyebrow">Growth services</p>
-        <h3>SEO, links and ads — after a fit check.</h3>
+        <h3>SEO, links and ads, after a fit check.</h3>
         <p>Prices are public. We still only take a clinic that fits. A good fit starts at the published price, not a custom quote. Ad spend is paid separately. Tier names and scopes are proposed.</p>
         <ul>
-          <li><strong>Essential — $2,495/mo</strong> (proposed). Technical and on-page implant SEO, 2 pitches or placements, ads account recommendations.</li>
-          <li><strong>Advanced — $3,995/mo</strong> (proposed, mid-tier). Full implant SEO programme, 4 pitches or placements, managed implant search campaigns.</li>
-          <li><strong>Authority — $5,995/mo</strong> (proposed). City-wide implant and full-arch SEO, 8 pitches or placements, search plus remarketing.</li>
+          <li><strong>Essential, $2,495/mo</strong> (proposed). Technical and on-page implant SEO, 2 pitches or placements, ads account recommendations.</li>
+          <li><strong>Advanced, $3,995/mo</strong> (proposed, mid-tier). Full implant SEO programme, 4 pitches or placements, managed implant search campaigns.</li>
+          <li><strong>Authority, $5,995/mo</strong> (proposed). City-wide implant and full-arch SEO, 8 pitches or placements, search plus remarketing.</li>
         </ul>
         <a class="btn btn-dark" href="/growth/fit-check/">Check if we’re a good fit</a>
       </article>
@@ -110,9 +112,9 @@ import Marquee from '../components/Marquee.astro';
         <h3>Three fixed Astro and Sanity builds. No quotes.</h3>
         <p>Every site is AI-ready and Ahpra-checked. 50% is due upfront, then 10% of the price each month until paid, or you can pay off early. Enquire to see if you qualify; the price itself is on the page.</p>
         <ul>
-          <li><strong>Launch — $9,995.</strong> Up to 10 pages, premium template design, 4 weeks.</li>
-          <li><strong>Signature — $14,995.</strong> Up to 25 pages, custom design, implant and full-arch landers, 6 weeks.</li>
-          <li><strong>Flagship — $19,995.</strong> Up to 50 pages, full content hub, all copywriting, 8 weeks.</li>
+          <li><strong>Launch, $9,995.</strong> Up to 10 pages, premium template design, 4 weeks.</li>
+          <li><strong>Signature, $14,995.</strong> Up to 25 pages, custom design, implant and full-arch landers, 6 weeks.</li>
+          <li><strong>Flagship, $19,995.</strong> Up to 50 pages, full content hub, all copywriting, 8 weeks.</li>
         </ul>
         <a class="btn btn-dark" href="/websites/">See website packages</a>
       </article>
@@ -161,7 +163,7 @@ import Marquee from '../components/Marquee.astro';
       </div>
       <div class="checks" data-stagger>
         <div class="check"><strong>No guaranteed outcomes</strong>Targets are aims from your baseline. They’re reported honestly, including when we’re behind.</div>
-        <div class="check"><strong>No patient stories on this site</strong>Case studies, when we have them, will be about clinic marketing work — not clinical results.</div>
+        <div class="check"><strong>No patient stories on this site</strong>Case studies, when we have them, will be about clinic marketing work, not clinical results.</div>
         <div class="check"><strong>You approve what goes public</strong>Listings, articles and schema changes wait for your written okay.</div>
       </div>
     </div>
@@ -172,7 +174,7 @@ import Marquee from '../components/Marquee.astro';
       <p class="eyebrow">Results</p>
       <h2>Case studies come after the pilots, not before.</h2>
       <div class="placeholder" data-reveal style="margin-top:24px">
-        <strong>Placeholder — no results to show yet.</strong>
+        <strong>Placeholder: no results to show yet.</strong>
         <p style="margin-top:.6rem">The first write-ups will appear here once pilot clinics complete their first 90 days, with numbers taken from their scoreboards. We will not invent statistics, client logos or patient testimonials. If a clinic prefers to stay unnamed, the case will be anonymised. We will add them to this page, not to a separate results index.</p>
       </div>
     </div>
@@ -183,7 +185,7 @@ import Marquee from '../components/Marquee.astro';
       <p class="eyebrow">Insights</p>
       <h2>Notes on AI search for implant clinics.</h2>
       <div class="cards3" style="margin-top:28px" data-stagger>
-        <article class="insight"><div class="soon">Coming soon</div><h3>How AI tools decide which implant clinic to name</h3><p class="muted">What we look for in test prompts — and what we can’t control.</p></article>
+        <article class="insight"><div class="soon">Coming soon</div><h3>How AI tools decide which implant clinic to name</h3><p class="muted">What we look for in test prompts, and what we can’t control.</p></article>
         <article class="insight"><div class="soon">Coming soon</div><h3>What Ahpra advertising rules mean for implant pages</h3><p class="muted">A practical reading for principals, not legal advice.</p></article>
         <article class="insight"><div class="soon">Coming soon</div><h3>Why Google reviews show up in AI answers</h3><p class="muted">And how we ask for them without writing the review for the patient.</p></article>
       </div>

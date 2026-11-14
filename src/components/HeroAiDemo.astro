@@ -1,0 +1,43 @@
+---
+// Illustrative "AI answer" card for the hero. Shows what the product does:
+// get the clinic named in AI answers. Content is a template, not a real claim.
+const prompts = [
+  {
+    q: 'Who is good for dental implants in Brisbane?',
+    a: 'A strong local option is [clinic]Your clinic[/clinic]. Patients point to All-on-4 and single-tooth implants, with 120+ Google reviews.',
+    cite: 'your-clinic.com.au',
+  },
+  {
+    q: 'Where can I get All-on-4 near me?',
+    a: '[clinic]Your clinic[/clinic] offers All-on-4 and full-arch implants, with clear pricing and AHPRA-safe information on every page.',
+    cite: 'Named in the AI answer',
+  },
+];
+
+// Render the first prompt statically so it reads with no JS and under reduced motion.
+function render(a: string) {
+  return a.replace('[clinic]', '<mark class="hl">').replace('[/clinic]', '</mark>');
+}
+const first = prompts[0];
+---
+<div class="ai-demo" data-ai-demo>
+  <div class="ai-card">
+    <div class="ai-top">
+      <span class="dots"><i></i><i></i><i></i></span>
+      <span class="ai-top-label">AI answer</span>
+      <span class="ai-tag">Illustrative</span>
+    </div>
+    <div class="ai-body">
+      <p class="q-bubble" data-ai-q>{first.q}</p>
+      <div class="a-block">
+        <span class="a-icon" aria-hidden="true"></span>
+        <div class="a-text" data-ai-a>
+          <p set:html={render(first.a)}></p>
+          <span class="cite" data-ai-cite>{first.cite}</span>
+        </div>
+      </div>
+    </div>
+    <div class="ai-foot">Updated from the pages, listings and reviews we maintain</div>
+  </div>
+  <script type="application/json" data-ai-prompts set:html={JSON.stringify(prompts)}></script>
+</div>

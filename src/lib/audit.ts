@@ -439,7 +439,7 @@ export async function runAudit(inputUrl: string, signal?: AbortSignal): Promise<
     'Title & meta description',
     Boolean(title) && Boolean(meta),
     5,
-    `Title: ${title.slice(0, 90) || '—'} | Meta: ${meta.slice(0, 120) || '—'}`,
+    `Title: ${title.slice(0, 90) || 'n/a'} | Meta: ${meta.slice(0, 120) || 'n/a'}`,
     'Write a clear title and meta description naming the service and suburb.',
     title || meta ? 0.5 : 0
   );

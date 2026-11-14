@@ -1,4 +1,4 @@
-/* Motion system — vanilla CSS. Disabled under prefers-reduced-motion. */
+/* Motion system, vanilla CSS. Disabled under prefers-reduced-motion. */
 
 .lime-stage {
   position: absolute;
@@ -7,31 +7,61 @@
   overflow: hidden;
   border-radius: inherit;
   pointer-events: none;
+  background: var(--color-carbon-ink);
 }
 .lime-fallback,
-.lime-video {
+.lime-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+.lime-canvas {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.lime-canvas[data-on="true"] { opacity: 0.7 }
+/* Oversized so a small parallax shift never reveals the panel edge. */
+.lime-stage--parallax { top: -80px; bottom: -80px; will-change: transform }
+/* Blurred acid-green light streaks cutting diagonally across black glass. */
 .lime-fallback {
+  inset: -30%;
+  width: 160%;
+  height: 160%;
   background-color: var(--color-carbon-ink);
   background-image:
-    radial-gradient(46% 38% at 80% 18%, rgba(190, 252, 101, 0.28) 0%, rgba(190, 252, 101, 0.06) 38%, transparent 72%),
-    radial-gradient(32% 24% at 22% 78%, rgba(190, 252, 101, 0.14) 0%, transparent 70%);
+    linear-gradient(118deg, transparent 30%, rgba(190, 252, 101, 0.55) 46%, rgba(216, 255, 150, 0.85) 50%, rgba(190, 252, 101, 0.4) 54%, transparent 68%),
+    linear-gradient(118deg, transparent 54%, rgba(150, 230, 90, 0.35) 63%, rgba(190, 252, 101, 0.18) 68%, transparent 80%),
+    radial-gradient(40% 70% at 78% 30%, rgba(190, 252, 101, 0.3) 0%, transparent 70%),
+    radial-gradient(60% 50% at 95% 8%, rgba(120, 200, 70, 0.22) 0%, transparent 72%);
   background-repeat: no-repeat;
-  filter: blur(48px);
-  transform: scale(1.2);
-  opacity: 0.85;
-  animation: lime-drift 22s ease-in-out infinite alternate;
+  filter: blur(46px) saturate(1.06);
+  transform: translate3d(0, 0, 0) rotate(-1deg) scale(1.04);
+  opacity: 0.82;
+  animation: lime-drift 26s ease-in-out infinite alternate;
 }
-.lime-video {
-  opacity: 0;
-  transition: opacity .8s ease;
+/* Depth: darken the edges so nav and display copy keep their contrast over the light. */
+.lime-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(72% 62% at 10% 86%, rgba(10, 10, 11, 0.82) 0%, transparent 60%),
+    linear-gradient(90deg, rgba(10, 10, 11, 0.64) 0%, transparent 46%),
+    linear-gradient(0deg, rgba(10, 10, 11, 0.5) 0%, transparent 32%),
+    linear-gradient(180deg, rgba(10, 10, 11, 0.42) 0%, transparent 22%);
 }
-.lime-video[data-loaded="true"] { opacity: 0.72; filter: saturate(0.85) contrast(0.95) }
+@media (max-width: 700px) {
+  .lime-fallback { opacity: 0.68; filter: blur(42px) saturate(1.02) }
+  .lime-stage::after {
+    background:
+      linear-gradient(180deg, rgba(10, 10, 11, 0.5) 0%, transparent 24%),
+      linear-gradient(0deg, rgba(10, 10, 11, 0.74) 0%, transparent 46%),
+      radial-gradient(90% 55% at 15% 88%, rgba(10, 10, 11, 0.7) 0%, transparent 62%);
+  }
+}
 .hero,
 .cta-band,
 .vip-hero,
@@ -44,11 +74,11 @@
 .page-hero > :not(.lime-stage) { position: relative; z-index: 1 }
 
 @keyframes lime-drift {
-  from { transform: translate3d(-3%, -2%, 0) scale(1.12) }
-  to { transform: translate3d(4%, 3%, 0) scale(1.2) }
+  from { transform: translate3d(-4%, -2%, 0) rotate(-1deg) scale(1.04) }
+  to { transform: translate3d(5%, 3%, 0) rotate(1.5deg) scale(1.12) }
 }
 
-/* Scroll reveals — offscreen only (JS adds .is-pending). No hero hide, no CLS. */
+/* Scroll reveals, offscreen only (JS adds .is-pending). No hero hide, no CLS. */
 [data-reveal].is-pending,
 [data-stagger] > .is-pending {
   opacity: 0;
@@ -192,7 +222,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .lime-fallback { animation: none; transform: none }
-  .lime-video { display: none }
+  .lime-canvas { display: none }
   [data-reveal].is-pending,
   [data-stagger] > .is-pending,
   .ladder.ladder-animate .step.is-pending {
@@ -224,5 +254,5 @@
     transform: none !important;
   }
   .ticker-track { animation: none }
-  .lime-video { display: none }
+  .lime-canvas { display: none }
 }
