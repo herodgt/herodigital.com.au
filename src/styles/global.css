@@ -1,11 +1,14 @@
+@import "@fontsource/geist-sans/latin-400.css";
+@import "@fontsource/geist-sans/latin-500.css";
+@import "@fontsource/geist-sans/latin-600.css";
 @import "@fontsource/inter/latin-400.css";
 @import "@fontsource/inter/latin-500.css";
 @import "@fontsource/inter/latin-600.css";
 @import "./motion.css";
 
-/* Hero Digital — Bejamas-inspired visual language.
-   Tokens and layout only. Inter substitutes for Neue Montreal.
-   Voltage Lime is reserved for conversion controls; never lime text on paper. */
+/* Hero Digital, Bejamas-inspired visual language.
+   Geist Sans carries the single-family system (Neue Montreal substitute),
+   Inter is the fallback. Voltage Lime is reserved for conversion controls. */
 
 :root {
   /* Colors */
@@ -26,7 +29,7 @@
   --bg: var(--color-paper-gray);
   --paper: var(--color-paper-gray);
   --cream: var(--color-paper-gray);
-  --sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --sans: "Geist Sans", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-neuemontreal: var(--sans);
   --serif: var(--sans);
 
@@ -53,11 +56,11 @@
   --leading-problem-heading: 1.18;
   --tracking-problem-heading: -0.02em;
   --text-editorial-display: 56px;
-  --leading-editorial-display: 1.18;
-  --tracking-editorial-display: -0.025em;
-  --text-hero-display: 72px;
-  --leading-hero-display: 1.2;
-  --tracking-hero-display: -0.035em;
+  --leading-editorial-display: 1.1;
+  --tracking-editorial-display: -0.03em;
+  --text-hero-display: 76px;
+  --leading-hero-display: 1.04;
+  --tracking-hero-display: -0.04em;
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -79,8 +82,8 @@
   --spacing-128: 128px;
 
   --section-gap: 32px;
-  --card-padding: 20px;
-  --element-gap: 20px;
+  --card-padding: 26px;
+  --element-gap: 24px;
 
   --radius-md: 6.4px;
   --radius-2xl: 17.6px;
@@ -117,6 +120,8 @@ body {
   font-size: var(--text-body);
   font-weight: var(--font-weight-medium);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   color-scheme: light;
 }
 img, svg { max-width: 100%; display: block }
@@ -128,7 +133,7 @@ h1, h2, h3, h4 {
   font-family: var(--sans);
 }
 h1 {
-  font-size: clamp(2.5rem, 6.5vw, var(--text-hero-display));
+  font-size: clamp(2.6rem, 7vw, var(--text-hero-display));
   font-weight: var(--font-weight-regular);
   line-height: var(--leading-hero-display);
   letter-spacing: var(--tracking-hero-display);
@@ -276,7 +281,7 @@ p:last-child { margin-bottom: 0 }
   border-radius: var(--radius-compactbuttons);
 }
 
-/* Overlay Site Header — unboxed, no fill or shadow, edge padding */
+/* Overlay Site Header, unboxed, no fill or shadow, edge padding */
 .site-header {
   position: sticky;
   top: 0;
@@ -360,7 +365,7 @@ p:last-child { margin-bottom: 0 }
   .nav-toggle { display: none !important }
 }
 
-/* Carbon panels — animated lime light lives in .lime-stage */
+/* Carbon panels, animated lime light lives in .lime-stage */
 .lime-light,
 .hero,
 .cta-band,
@@ -368,19 +373,19 @@ p:last-child { margin-bottom: 0 }
   background-color: var(--color-carbon-ink);
 }
 
-/* Immersive hero panel — full-bleed, not a contained rounded card */
+/* Immersive hero panel, full-bleed, not a contained rounded card */
 .hero-band { padding: 0 }
 .hero {
   position: relative;
   overflow: hidden;
   border-radius: 0;
   color: rgba(255, 255, 255, 0.78);
-  padding: 120px 0 88px;
+  padding: 152px 0 112px;
 }
-.hero h1 { color: var(--color-cloud-white); margin-bottom: .35em }
-.hero .lead { color: rgba(255, 255, 255, 0.78); margin-bottom: 1.8rem; font-size: 16px; line-height: 1.5; font-weight: 500 }
-.hero .eyebrow { color: rgba(255, 255, 255, 0.72) }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 40rem); gap: 64px; align-items: start }
+.hero h1 { color: var(--color-cloud-white); margin-bottom: .4em; max-width: 15ch }
+.hero .lead { color: rgba(255, 255, 255, 0.82); margin-bottom: 2.1rem; font-size: 18px; line-height: 1.55; font-weight: 400; max-width: 34rem }
+.hero .eyebrow { color: rgba(255, 255, 255, 0.72); margin-bottom: 1.4rem }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 44rem); gap: 64px; align-items: start }
 .micro {
   margin-top: 1.15rem;
   font-size: 16px;
@@ -671,7 +676,7 @@ p:last-child { margin-bottom: 0 }
   background: var(--color-cloud-white);
   border: 1px solid var(--color-divider-ash);
   border-radius: var(--radius-cards);
-  padding: 32px 20px;
+  padding: 36px 32px;
   box-shadow: none;
 }
 .block ul { margin: .2rem 0 1.2rem; padding-left: 1.1rem }
@@ -769,7 +774,7 @@ details summary::after {
 details[open] summary::after { content: "–" }
 details p { margin: 12px 0 6px; color: var(--color-carbon-ink); font-weight: 500 }
 
-/* CTA band — contained dark panel */
+/* CTA band, contained dark panel */
 .cta-shell { padding: 24px 0 48px }
 .cta-band {
   position: relative;
@@ -785,7 +790,7 @@ details p { margin: 12px 0 6px; color: var(--color-carbon-ink); font-weight: 500
 .cta-band :focus-visible { outline-color: var(--color-voltage-lime) }
 .hero :focus-visible { outline-color: var(--color-voltage-lime) }
 
-/* Footer — paper canvas, hairline rules */
+/* Footer, paper canvas, hairline rules */
 .site-footer {
   background: var(--color-paper-gray);
   color: var(--color-muted-graphite);
@@ -1044,7 +1049,7 @@ body.page-vip .legal { border-top-color: var(--color-divider-ash); color: var(--
   border: 0;
 }
 
-/* Inner page hero — full-bleed carbon, same family as the homepage hero */
+/* Inner page hero, full-bleed carbon, same family as the homepage hero */
 .page-hero {
   position: relative;
   overflow: hidden;
@@ -1168,7 +1173,7 @@ table.data .num { font-variant-numeric: tabular-nums; white-space: nowrap }
 }
 @media (max-width: 800px) { .form-row { grid-template-columns: 1fr } }
 
-/* Notice — monochrome, no amber/teal */
+/* Notice, monochrome, no amber/teal */
 .notice {
   background: var(--color-cloud-white);
   border: 1px solid var(--color-divider-ash);

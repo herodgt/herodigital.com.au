@@ -84,7 +84,7 @@ export const growthTiers: Plan[] = [
     name: 'Essential',
     price: 2495,
     period: 'month',
-    who: 'Proposed name and scope — confirm as we go. Technical and on-page implant SEO, with ads recommendations.',
+    who: 'Proposed name and scope, confirm as we go. Technical and on-page implant SEO, with ads recommendations.',
     points: [
       'Technical and on-page work on implant pages',
       'Monthly search-visibility letter',
@@ -99,7 +99,7 @@ export const growthTiers: Plan[] = [
     price: 3995,
     period: 'month',
     featured: true,
-    who: 'Proposed mid-tier — this is the growth stack included in Hero One.',
+    who: 'Proposed mid-tier. This is the growth stack included in Hero One.',
     points: [
       'A full implant SEO programme, including supporting pages',
       '4 pitches or placements a month',
@@ -113,7 +113,7 @@ export const growthTiers: Plan[] = [
     name: 'Authority',
     price: 5995,
     period: 'month',
-    who: 'Proposed top tier — city-wide implant and full-arch growth work.',
+    who: 'Proposed top tier, city-wide implant and full-arch growth work.',
     points: [
       'City-wide implant and full-arch SEO, including location pages',
       '8 pitches or placements a month, plus a monthly PR shortlist',
@@ -201,7 +201,7 @@ export const ladder = [
     price: '$1,995–$4,995 / month + $1,995 setup',
     href: '/ai-visibility/',
     cta: 'Compare the three plans →',
-    body: 'Starter, Growth or Premium. 90-day minimum, then month to month. Outcome targets are set from your baseline and reported — not guaranteed.',
+    body: 'Starter, Growth or Premium. 90-day minimum, then month to month. Outcome targets are set from your baseline and reported, not guaranteed.',
     core: true,
   },
   {
@@ -263,7 +263,7 @@ export const posts: Post[] = [
   {
     slug: 'how-ai-tools-decide-which-implant-clinic-to-name',
     title: 'How AI tools decide which implant clinic to name',
-    excerpt: 'What we look for in test prompts — and what we can’t control.',
+    excerpt: 'What we look for in test prompts, and what we can’t control.',
     status: 'coming-soon',
     body: [
       'This is a placeholder outline, not a published article. It will be written and Ahpra-checked before it goes live.',

@@ -15,7 +15,7 @@ const requested = Astro.url.searchParams.get('url') || '';
       <div class="wrap">
         <p class="eyebrow">Instant technical audit</p>
         <h1>See the technical score, then request the full report.</h1>
-        <p class="lead">Enter a clinic website. We’ll crawl the public pages and return a score with pass or fail checks and the top fixes. Whether ChatGPT and other tools actually recommend the clinic is in the branded PDF — those numbers are never invented here.</p>
+        <p class="lead">Enter a clinic website. We’ll crawl the public pages and return a score with pass or fail checks and the top fixes. Whether ChatGPT and other tools actually recommend the clinic is in the branded PDF. Those numbers are never invented here.</p>
         <form class="audit-form" id="audit" data-audit-form action="/audit/" method="get">
           <label class="sr-only" for="audit-url">Enter your website</label>
           <input id="audit-url" name="url" type="url" required placeholder="Enter your website" autocomplete="url" inputmode="url" value={requested} />

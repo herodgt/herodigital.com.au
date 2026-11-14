@@ -50,7 +50,7 @@ export function renderAuditResult(target, data, opts = {}) {
           <p class="lead audit-url">Checked ${audited}${data.responseMs != null ? ` in ${esc(data.responseMs)} ms` : ''}.</p>
         </div>
       </div>
-      <p class="audit-note">This is a technical crawl of the public site: HTTPS, robots.txt for AI crawlers, llms.txt, schema, title and H1, NAP, implant-page signals, sitemap, and a simple speed proxy. Whether ChatGPT, Perplexity, Gemini or Google’s AI answers actually recommend the clinic is tested with dated prompts in the full branded PDF report — those figures are never invented here.</p>
+      <p class="audit-note">This is a technical crawl of the public site: HTTPS, robots.txt for AI crawlers, llms.txt, schema, title and H1, NAP, implant-page signals, sitemap, and a simple speed proxy. Whether ChatGPT, Perplexity, Gemini or Google’s AI answers actually recommend the clinic is tested with dated prompts in the full branded PDF report. Those figures are never invented here.</p>
       ${fixes ? `<div class="audit-fixes"><h3>Top ${data.topFixes.length} fixes</h3><ol>${fixes}</ol></div>` : ''}
       <h3>Checks</h3>
       <ul class="audit-checks">${checks}</ul>
