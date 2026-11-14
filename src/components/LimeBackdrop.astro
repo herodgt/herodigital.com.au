@@ -1,15 +1,12 @@
 ---
+interface Props { parallax?: boolean }
+const { parallax = false } = Astro.props;
 ---
-<div class="lime-stage" aria-hidden="true">
+<div
+  class:list={['lime-stage', parallax && 'lime-stage--parallax']}
+  data-parallax={parallax ? '0.08' : undefined}
+  aria-hidden="true"
+>
   <div class="lime-fallback"></div>
-  <video
-    class="lime-video"
-    muted
-    loop
-    playsinline
-    preload="none"
-    poster="/media/lime-streaks-poster.webp"
-    data-src-webm="/media/lime-streaks.webm"
-    data-src-mp4="/media/lime-streaks.mp4"
-  ></video>
+  <canvas class="lime-canvas" data-lime-canvas></canvas>
 </div>

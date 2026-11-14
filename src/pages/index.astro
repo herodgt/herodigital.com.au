@@ -6,6 +6,7 @@ import OfferJsonLd from '../components/OfferJsonLd.astro';
 import { ladder, aiPlans, homeFaqs, money } from '../data/content';
 import LimeBackdrop from '../components/LimeBackdrop.astro';
 import Marquee from '../components/Marquee.astro';
+import HeroAiDemo from '../components/HeroAiDemo.astro';
 ---
 <Base
   title="AI visibility for dental implant clinics"
@@ -21,7 +22,7 @@ import Marquee from '../components/Marquee.astro';
 
   <section class="hero-band">
     <div class="hero">
-    <LimeBackdrop />
+    <LimeBackdrop parallax />
     <div class="wrap">
     <div class="hero-grid">
       <div>
@@ -40,6 +41,7 @@ import Marquee from '../components/Marquee.astro';
           <span>Targets are aims, not guarantees</span>
         </div>
       </div>
+      <HeroAiDemo />
     </div>
     </div>
   </div>
